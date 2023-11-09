@@ -27,4 +27,8 @@ public class Order {
         }
     }
 
+    public String getMessage() {
+        return String.format(menu.name() + "%d개", count);
+    }
+
 }

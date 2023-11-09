@@ -35,6 +35,9 @@ public class ChristmasController {
         Today today = tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
         Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
 
+        outputView.printHeader();
+        outputView.printOrderedMenus(orders.getMessage());
+
     }
 
     private <T> T tryCatchLoop(Supplier<T> supplier) {

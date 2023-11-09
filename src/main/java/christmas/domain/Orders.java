@@ -10,4 +10,8 @@ public class Orders {
         this.orders = orders;
     }
 
+    public String getMessage() {
+        return String.join("\n", orders.stream().map(Order::getMessage).toList());
+    }
+
 }

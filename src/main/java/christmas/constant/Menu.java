@@ -7,7 +7,7 @@ public enum Menu {
     MUSHROOM_SOUP("양송이수프", Course.APPETIZER, 6_000),
     TAPAS("타파스", Course.APPETIZER, 5_500),
     CAESAR_SALAD("시저샐러드", Course.APPETIZER, 8_000),
-    T_BONE_STEAK("티본 스테이크", Course.MAIN, 55_000),
+    T_BONE_STEAK("티본스테이크", Course.MAIN, 55_000),
     BARBEQUE_RIBS("바비큐립", Course.MAIN, 54_000),
     SEAFOOD_PASTA("해산물파스타", Course.MAIN, 35_000),
     CHRISTMAS_PASTA("크리스마스파스타", Course.MAIN, 25_000),

@@ -8,13 +8,14 @@ import java.util.List;
 
 public class OrderService {
 
+    public static final String ORDERS_STRING_DELIMITER = ",";
     public static final String DASH_STRING = "-";
     public static final char DASH_CHAR = '-';
     public static final int DASH_COUNT = 1;
     public static final String INVALID_ORDER_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해주세요.";
 
     public Orders createOrders(String ordersString) {
-        List<Order> orders = Arrays.stream(ordersString.split(","))
+        List<Order> orders = Arrays.stream(ordersString.split(ORDERS_STRING_DELIMITER))
                 .map(this::createOrder)
                 .toList();
         return new Orders(orders);

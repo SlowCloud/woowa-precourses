@@ -34,4 +34,8 @@ public enum Menu {
                 .orElse(null);
     }
 
+    public String getMenuName() {
+        return name;
+    }
+
 }

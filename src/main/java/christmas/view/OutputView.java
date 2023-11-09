@@ -10,4 +10,9 @@ public class OutputView {
         System.out.println(e.getMessage());
     }
 
+    public void printOrderedMenus(String orderedMenus) {
+        System.out.println("<주문 메뉴>");
+        System.out.println(orderedMenus);
+    }
+
 }

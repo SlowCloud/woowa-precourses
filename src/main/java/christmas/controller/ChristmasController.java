@@ -33,7 +33,7 @@ public class ChristmasController {
     public void play() {
 
         Today today = tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
-        Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getMenusAndCounts()));
+        Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
 
     }
 

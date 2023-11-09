@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Orders;
 import christmas.domain.Today;
 import christmas.service.OrderService;
 import christmas.service.TodayService;
@@ -32,6 +33,7 @@ public class ChristmasController {
     public void play() {
 
         Today today = tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
+        Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getMenusAndCounts()));
 
     }
 

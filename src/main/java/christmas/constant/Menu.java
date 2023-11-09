@@ -1,5 +1,7 @@
 package christmas.constant;
 
+import java.util.Arrays;
+
 public enum Menu {
 
     MUSHROOM_SOUP("양송이수프", Course.APPETIZER, 6_000),
@@ -23,6 +25,13 @@ public enum Menu {
         this.name = name;
         this.course = course;
         this.price = price;
+    }
+
+    public static Menu getMenu(String name) {
+        return Arrays.stream(Menu.values())
+                .filter(menu -> menu.name.equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
 }

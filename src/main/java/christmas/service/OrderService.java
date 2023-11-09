@@ -1,6 +1,7 @@
 package christmas.service;
 
 import christmas.domain.Order;
+import christmas.domain.Orders;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,10 +13,11 @@ public class OrderService {
     public static final int DASH_COUNT = 1;
     public static final String INVALID_ORDER_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해주세요.";
 
-    public List<Order> createOrders(String ordersString) {
-        return Arrays.stream(ordersString.split(","))
+    public Orders createOrders(String ordersString) {
+        List<Order> orders = Arrays.stream(ordersString.split(","))
                 .map(this::createOrder)
                 .toList();
+        return new Orders(orders);
     }
 
     public Order createOrder(String orderString) {

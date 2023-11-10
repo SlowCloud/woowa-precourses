@@ -41,4 +41,9 @@ public enum Menu {
     public int getPrice() {
         return price;
     }
+
+    public boolean is(Course course) {
+        return this.course.equals(course);
+    }
+
 }

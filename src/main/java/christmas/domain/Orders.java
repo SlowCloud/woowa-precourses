@@ -11,7 +11,9 @@ public class Orders {
     }
 
     public String getOrderedMenusMessage() {
-        return String.join("\n", orders.stream().map(Order::getMessage).toList());
+        return String.join("\n", orders.stream()
+                .map(Order::getMessage)
+                .toList());
     }
 
     public int getTotalPrice() {
@@ -19,4 +21,5 @@ public class Orders {
                 .mapToInt(Order::getPrice)
                 .sum();
     }
+
 }

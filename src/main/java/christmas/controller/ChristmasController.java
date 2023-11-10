@@ -37,6 +37,7 @@ public class ChristmasController {
 
         outputView.printHeader();
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
+        outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
 
     }
 

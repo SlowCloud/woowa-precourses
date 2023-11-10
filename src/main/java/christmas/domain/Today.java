@@ -39,5 +39,7 @@ public class Today {
         return Calender.SUNDAY.validate(today);
     }
 
-
+    public int getToday() {
+        return today;
+    }
 }

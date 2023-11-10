@@ -32,7 +32,7 @@ public class Order {
     }
 
     public int getPrice() {
-        return menu.getPrice();
+        return menu.getPrice() * count;
     }
 
 }

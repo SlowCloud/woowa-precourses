@@ -8,8 +8,8 @@ public class DiscountEvents {
 
     private final List<DiscountEvent> discountEvents;
 
-    public DiscountEvents(List<DiscountEvent> discountEvents) {
-        this.discountEvents = discountEvents;
+    public DiscountEvents(Today today) {
+        this.discountEvents = DiscountEvent.getAvailableEvents(today);
     }
 
 }

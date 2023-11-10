@@ -14,4 +14,9 @@ public class Orders {
         return String.join("\n", orders.stream().map(Order::getMessage).toList());
     }
 
+    public int getTotalPrice() {
+        return orders.stream()
+                .mapToInt(Order::getPrice)
+                .sum();
+    }
 }

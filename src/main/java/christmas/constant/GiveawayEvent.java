@@ -14,4 +14,10 @@ public enum GiveawayEvent {
         this.validator = validator;
     }
 
+    public static List<GiveawayEvent> getAvailableEvents(int price) {
+        return Arrays.stream(values())
+                .filter(giveawayEvent -> giveawayEvent.validator.apply(price))
+                .toList();
+    }
+
 }

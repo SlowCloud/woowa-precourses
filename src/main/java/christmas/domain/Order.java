@@ -31,4 +31,8 @@ public class Order {
         return String.format(menu.getMenuName() + " %d개", count);
     }
 
+    public int getPrice() {
+        return menu.getPrice();
+    }
+
 }

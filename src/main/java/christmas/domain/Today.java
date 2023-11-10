@@ -42,4 +42,5 @@ public class Today {
     public int getToday() {
         return today;
     }
+
 }

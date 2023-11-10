@@ -17,13 +17,13 @@ public class Order {
     }
 
     private void validateMenu(String name) {
-        if(Menu.getMenu(name) == null) {
+        if (Menu.getMenu(name) == null) {
             throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
         }
     }
 
     private void validateCount(int count) {
-        if(count <= 0) {
+        if (count <= 0) {
             throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
         }
     }

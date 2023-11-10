@@ -20,11 +20,10 @@ public enum DiscountEvent {
         this.validator = validator;
     }
 
-    public static DiscountEvents getAvailableEvents(Today today) {
-        List<DiscountEvent> discountEvents = Arrays.stream(DiscountEvent.values())
+    public static List<DiscountEvent> getAvailableEvents(Today today) {
+        return Arrays.stream(DiscountEvent.values())
                 .filter(discountEvent -> discountEvent.validator.apply(today))
                 .toList();
-        return new DiscountEvents(discountEvents);
     }
 
 }

@@ -10,7 +10,7 @@ public class Orders {
         this.orders = orders;
     }
 
-    public String getMessage() {
+    public String getOrderedMenusMessage() {
         return String.join("\n", orders.stream().map(Order::getMessage).toList());
     }
 

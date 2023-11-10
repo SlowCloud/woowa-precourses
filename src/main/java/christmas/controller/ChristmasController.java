@@ -36,7 +36,7 @@ public class ChristmasController {
         Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
 
         outputView.printHeader();
-        outputView.printOrderedMenus(orders.getMessage());
+        outputView.printOrderedMenus(orders.getOrderedMenusMessage());
 
     }
 

@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.constant.Course;
 import christmas.constant.Menu;
 
 public class Order {
@@ -33,6 +34,10 @@ public class Order {
 
     public int getPrice() {
         return menu.getPrice() * count;
+    }
+
+    public boolean is(Course course) {
+        return menu.is(course);
     }
 
 }

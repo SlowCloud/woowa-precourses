@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.constant.Course;
+
 import java.util.List;
 
 public class Orders {
@@ -20,6 +22,12 @@ public class Orders {
         return orders.stream()
                 .mapToInt(Order::getPrice)
                 .sum();
+    }
+
+    public long getCourseCount(Course course) {
+        return orders.stream()
+                .filter(order -> order.is(course))
+                .count();
     }
 
 }

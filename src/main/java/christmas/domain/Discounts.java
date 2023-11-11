@@ -22,4 +22,10 @@ public class Discounts {
         return String.join("\n", messages);
     }
 
+    public int getTotalDiscounts() {
+        return discounts.stream()
+                .mapToInt(Discount::getDiscount)
+                .sum();
+    }
+
 }

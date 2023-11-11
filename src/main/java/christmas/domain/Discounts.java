@@ -15,7 +15,7 @@ public class Discounts {
         this.discounts.addAll(discounts);
     }
 
-    private String getDiscountMessage() {
+    public String getDiscountMessage() {
         List<String> messages = discounts.stream()
                 .map(Discount::getMessage)
                 .toList();

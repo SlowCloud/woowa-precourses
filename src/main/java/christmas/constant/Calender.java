@@ -4,6 +4,7 @@ import java.util.function.Function;
 
 public enum Calender {
 
+    BEFORE_CHRISTMAS(day -> day <= Constants.CHRISTMAS_DAY),
     CHRISTMAS(day -> day == Constants.CHRISTMAS_DAY),
     WEEKDAY(day -> day % 7 == Constants.FRIDAY || day % 7 == Constants.SATURDAY),
     WEEKEND(day -> day % 7 == Constants.SUNDAY || day % 7 == Constants.MONDAY),

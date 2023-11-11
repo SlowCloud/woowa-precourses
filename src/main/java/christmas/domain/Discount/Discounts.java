@@ -16,10 +16,16 @@ public class Discounts {
     }
 
     public String getDiscountMessage() {
+
+        if(discounts.isEmpty()) {
+            return "없음";
+        }
+
         List<String> messages = discounts.stream()
                 .map(Discount::getMessage)
                 .toList();
         return String.join("\n", messages);
+
     }
 
     public int getTotalDiscounts() {

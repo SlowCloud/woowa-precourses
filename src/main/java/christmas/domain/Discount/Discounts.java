@@ -1,5 +1,7 @@
 package christmas.domain.Discount;
 
+import christmas.constant.MessageJoiner;
+
 import java.util.List;
 
 public class Discounts {
@@ -11,20 +13,14 @@ public class Discounts {
     }
 
     public String getDiscountMessage() {
-
-        if(discounts.isEmpty()) {
-            return "없음";
-        }
-
         List<String> messages = discounts.stream()
                 .map(Discount::getMessage)
                 .toList();
-        return String.join("\n", messages);
-
+        return MessageJoiner.join(messages);
     }
 
     public int getTotalDiscounts() {
-        return - discounts.stream()
+        return -discounts.stream()
                 .mapToInt(Discount::getDiscount)
                 .sum();
     }

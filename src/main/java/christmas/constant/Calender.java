@@ -6,8 +6,8 @@ public enum Calender {
 
     BEFORE_CHRISTMAS(day -> day <= Constants.CHRISTMAS_DAY),
     CHRISTMAS(day -> day == Constants.CHRISTMAS_DAY),
-    WEEKDAY(day -> isDayOfWeek(day, Constants.FRIDAY) || isDayOfWeek(day, Constants.SATURDAY)),
-    WEEKEND(day -> isDayOfWeek(day, Constants.SUNDAY) || isDayOfWeek(day, Constants.MONDAY)),
+    WEEKDAY(day -> !isDayOfWeek(day, Constants.FRIDAY) && !isDayOfWeek(day, Constants.SATURDAY)),
+    WEEKEND(day -> isDayOfWeek(day, Constants.FRIDAY) || isDayOfWeek(day, Constants.SATURDAY)),
     SUNDAY(day -> isDayOfWeek(day, Constants.SUNDAY));
 
     private static boolean isDayOfWeek(Integer day, int dayOfWeek) {

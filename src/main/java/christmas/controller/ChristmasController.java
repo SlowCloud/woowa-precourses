@@ -39,32 +39,68 @@ public class ChristmasController {
 
         outputView.printHeader();
 
-        Today today = tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
-        Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
+        Today today = getToday();
+        Orders orders = getOrders();
 
-        GiveawayEvents giveawayEvents = new GiveawayEvents(
+        GiveawayEvents giveawayEvents = getGiveawayEvents(orders);
+        DiscountEvents discountEvents = getDiscountEvents(today, orders);
+        Discounts discounts = getDiscounts(discountEvents, giveawayEvents, today, orders);
+        Badge badge = getBadge(discounts);
+
+        printReceipt(orders, giveawayEvents, discounts, badge);
+
+    }
+
+    private Today getToday() {
+        return tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
+    }
+
+    private Orders getOrders() {
+        return tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
+    }
+
+    private Badge getBadge(Discounts discounts) {
+        return Badge.findBadge(discounts.getTotalDiscounts());
+    }
+
+    private GiveawayEvents getGiveawayEvents(Orders orders) {
+        return new GiveawayEvents(
                 GiveawayEvent.getAvailableEvents(orders.getTotalPrice())
         );
-        DiscountEvents discountEvents = new DiscountEvents(
+    }
+
+    private DiscountEvents getDiscountEvents(Today today, Orders orders) {
+        return new DiscountEvents(
                 DiscountEvent.getAvailableEvents(today, orders.getTotalPrice())
         );
+    }
 
+    private Discounts getDiscounts(
+            DiscountEvents discountEvents,
+            GiveawayEvents giveawayEvents,
+            Today today,
+            Orders orders
+    ) {
         DiscountsBuilder discountsBuilder = new DiscountsBuilder();
         discountsBuilder.add(discountEvents.getDiscounts(today, orders));
         discountsBuilder.add(giveawayEvents.getDiscounts());
-        Discounts discounts = discountsBuilder.build();
+        return discountsBuilder.build();
+    }
 
-        Badge badge = Badge.findBadge(discounts.getTotalDiscounts());
-
+    private void printReceipt(
+            Orders orders,
+            GiveawayEvents giveawayEvents,
+            Discounts discounts,
+            Badge badge
+    ) {
         outputView.printEventPreviewMessage();
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
         outputView.printGiveaway(giveawayEvents.getGiveawayMessage());
         outputView.printDiscounts(discounts.getDiscountMessage());
         outputView.printTotalDiscounts(discounts.getTotalDiscounts());
-        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() - discounts.getTotalDiscounts());
+        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + discounts.getTotalDiscounts());
         outputView.printBadge(badge.getBadgeName());
-
     }
 
     private <T> T tryCatchLoop(Supplier<T> supplier) {

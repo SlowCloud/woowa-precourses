@@ -34,6 +34,8 @@ public class ChristmasController {
 
     public void play() {
 
+        outputView.printHeader();
+
         Today today = tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
         Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
 
@@ -46,7 +48,7 @@ public class ChristmasController {
 
         Badge badge = Badge.findBadge(discounts.getTotalDiscounts());
 
-        outputView.printHeader();
+        outputView.printEventPreviewMessage();
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
         outputView.printGiveaway(giveawayEvents.getGiveawayMessage());

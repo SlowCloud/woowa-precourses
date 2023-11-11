@@ -1,5 +1,11 @@
 package christmas.view;
 
+import christmas.domain.Discount;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class OutputView {
 
     public void printHeader() {
@@ -23,6 +29,11 @@ public class OutputView {
     public void printGiveaway(String giveawayMessage) {
         System.out.println("<증정 메뉴>");
         System.out.println(giveawayMessage);
+    }
+
+    public final void printDiscounts(String discountsMessage) {
+        System.out.println("<혜택 내역>");
+        System.out.println(discountsMessage);
     }
 
 }

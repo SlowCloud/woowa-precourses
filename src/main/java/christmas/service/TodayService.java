@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.constant.ExceptionMessage;
 import christmas.domain.Today;
 
 public class TodayService {
@@ -13,7 +14,7 @@ public class TodayService {
         try {
             Integer.parseInt(today);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 입력이 숫자가 아닙니다. 다시 입력해주세요.");
+            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMBER_MESSAGE);
         }
     }
 

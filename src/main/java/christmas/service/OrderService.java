@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.constant.ExceptionMessage;
 import christmas.domain.Order.Order;
 import christmas.domain.Order.Orders;
 
@@ -12,7 +13,6 @@ public class OrderService {
     public static final String DASH_STRING = "-";
     public static final char DASH_CHAR = '-';
     public static final int DASH_COUNT = 1;
-    public static final String INVALID_ORDER_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해주세요.";
 
     public Orders createOrders(String ordersString) {
         List<Order> orders = Arrays.stream(ordersString.split(ORDERS_STRING_DELIMITER))
@@ -29,7 +29,7 @@ public class OrderService {
 
     private void validateDash(String orderString) {
         if (getDashCount(orderString) != DASH_COUNT) {
-            throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MESSAGE);
         }
     }
 
@@ -48,7 +48,7 @@ public class OrderService {
         try {
             Integer.parseInt(count);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER_MESSAGE);
         }
     }
 

@@ -14,7 +14,7 @@ public class TodayService {
         try {
             Integer.parseInt(today);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionMessage.NOT_NUMBER_MESSAGE);
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_TODAY_MESSAGE);
         }
     }
 

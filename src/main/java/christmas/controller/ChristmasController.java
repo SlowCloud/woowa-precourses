@@ -5,6 +5,7 @@ import christmas.constant.DiscountEvent;
 import christmas.constant.GiveawayEvent;
 import christmas.domain.*;
 import christmas.domain.Discount.Discounts;
+import christmas.domain.Discount.DiscountsBuilder;
 import christmas.domain.Order.Orders;
 import christmas.service.OrderService;
 import christmas.service.TodayService;
@@ -48,9 +49,10 @@ public class ChristmasController {
                 DiscountEvent.getAvailableEvents(today, orders.getTotalPrice())
         );
 
-        Discounts discounts = new Discounts();
-        discounts.add(discountEvents.getDiscounts(today, orders));
-        discounts.add(giveawayEvents.getDiscounts());
+        DiscountsBuilder discountsBuilder = new DiscountsBuilder();
+        discountsBuilder.add(discountEvents.getDiscounts(today, orders));
+        discountsBuilder.add(giveawayEvents.getDiscounts());
+        Discounts discounts = discountsBuilder.build();
 
         Badge badge = Badge.findBadge(discounts.getTotalDiscounts());
 

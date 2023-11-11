@@ -22,7 +22,7 @@ public enum Badge {
         return Arrays.stream(values())
                 .filter(badge -> badge.validator.apply(discounted))
                 .findFirst()
-                .orElse(NOTHING);
+                .orElseThrow();
     }
 
     public String getBadgeName() {

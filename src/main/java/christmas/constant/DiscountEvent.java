@@ -65,4 +65,5 @@ public enum DiscountEvent {
         public static final int D_DAY_DISCOUNT_BASE = 1000;
         public static final int D_DAY_DISCOUNT_PER_DAY = 100;
     }
+
 }

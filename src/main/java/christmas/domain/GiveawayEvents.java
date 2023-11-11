@@ -28,4 +28,10 @@ public class GiveawayEvents {
 
     }
 
+    public List<Discount> getDiscounts() {
+        return giveawayEvents.stream()
+                .map(GiveawayEvent::getDiscount)
+                .toList();
+    }
+
 }

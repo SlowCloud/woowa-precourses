@@ -19,12 +19,12 @@ public enum DiscountEvent {
     WEEKDAY(
             "평일 할인",
             today -> today.is(Calender.WEEKDAY),
-            (today, orders) -> orders.getCourseCount(Course.DESSERT) * Constants.DESSERT_MAIN_DISH_DISCOUNT
+            (today, orders) -> orders.getCourseCount(Course.MAIN) * Constants.DESSERT_MAIN_DISH_DISCOUNT
     ),
     WEEKEND(
             "주말 할인",
             today -> today.is(Calender.WEEKEND),
-            (today, orders) -> orders.getCourseCount(Course.MAIN) * Constants.DESSERT_MAIN_DISH_DISCOUNT
+            (today, orders) -> orders.getCourseCount(Course.DESSERT) * Constants.DESSERT_MAIN_DISH_DISCOUNT
     ),
     SPECIAL(
             "특별 할인",

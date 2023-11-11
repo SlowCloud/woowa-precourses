@@ -24,8 +24,8 @@ public class Orders {
                 .sum();
     }
 
-    public long getCourseCount(Course course) {
-        return orders.stream()
+    public int getCourseCount(Course course) {
+        return (int) orders.stream()
                 .filter(order -> order.is(course))
                 .count();
     }

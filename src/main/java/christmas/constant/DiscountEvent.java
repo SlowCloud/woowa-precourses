@@ -46,7 +46,10 @@ public enum DiscountEvent {
         this.discountCalculator = discountCalculator;
     }
 
-    public static List<DiscountEvent> getAvailableEvents(Today today) {
+    public static List<DiscountEvent> getAvailableEvents(Today today, int price) {
+        if (price < 10_000) {
+            return List.of();
+        }
         return Arrays.stream(DiscountEvent.values())
                 .filter(discountEvent -> discountEvent.validator.apply(today))
                 .toList();

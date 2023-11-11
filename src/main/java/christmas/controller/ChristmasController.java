@@ -41,8 +41,12 @@ public class ChristmasController {
         Today today = tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
         Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
 
-        GiveawayEvents giveawayEvents = new GiveawayEvents(GiveawayEvent.getAvailableEvents(orders.getTotalPrice()));
-        DiscountEvents discountEvents = new DiscountEvents(DiscountEvent.getAvailableEvents(today));
+        GiveawayEvents giveawayEvents = new GiveawayEvents(
+                GiveawayEvent.getAvailableEvents(orders.getTotalPrice())
+        );
+        DiscountEvents discountEvents = new DiscountEvents(
+                DiscountEvent.getAvailableEvents(today, orders.getTotalPrice())
+        );
 
         Discounts discounts = new Discounts();
         discounts.add(discountEvents.getDiscounts(today, orders));

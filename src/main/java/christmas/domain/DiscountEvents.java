@@ -12,4 +12,10 @@ public class DiscountEvents {
         this.discountEvents = discountEvents;
     }
 
+    public List<Discount> getDiscounts(Today today, Orders orders) {
+        return discountEvents.stream()
+                .map(discountEvent -> discountEvent.getDiscount(today, orders))
+                .toList();
+    }
+
 }

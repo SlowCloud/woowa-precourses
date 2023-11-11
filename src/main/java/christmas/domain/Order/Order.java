@@ -36,6 +36,14 @@ public class Order {
         return menu.getPrice() * count;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
     public boolean is(Course course) {
         return menu.is(course);
     }

@@ -17,4 +17,8 @@ public class Discounts {
         return String.join("\n", messages);
     }
 
+    public void add(Discounts discounts) {
+        this.discounts.addAll(discounts.discounts);
+    }
+
 }

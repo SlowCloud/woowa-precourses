@@ -1,7 +1,7 @@
 package christmas.service;
 
-import christmas.domain.Order;
-import christmas.domain.Orders;
+import christmas.domain.Order.Order;
+import christmas.domain.Order.Orders;
 
 import java.util.Arrays;
 import java.util.List;

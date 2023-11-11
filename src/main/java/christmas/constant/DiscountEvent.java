@@ -1,7 +1,7 @@
 package christmas.constant;
 
-import christmas.domain.Discount;
-import christmas.domain.Orders;
+import christmas.domain.Discount.Discount;
+import christmas.domain.Order.Orders;
 import christmas.domain.Today;
 
 import java.util.Arrays;

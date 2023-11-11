@@ -1,6 +1,6 @@
 package christmas.constant;
 
-import christmas.domain.Discount;
+import christmas.domain.Discount.Discount;
 
 import java.util.Arrays;
 import java.util.List;

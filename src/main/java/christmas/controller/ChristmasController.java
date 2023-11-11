@@ -4,6 +4,8 @@ import christmas.constant.Badge;
 import christmas.constant.DiscountEvent;
 import christmas.constant.GiveawayEvent;
 import christmas.domain.*;
+import christmas.domain.Discount.Discounts;
+import christmas.domain.Order.Orders;
 import christmas.service.OrderService;
 import christmas.service.TodayService;
 import christmas.view.InputView;

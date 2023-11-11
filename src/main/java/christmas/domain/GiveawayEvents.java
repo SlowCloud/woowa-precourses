@@ -1,9 +1,9 @@
 package christmas.domain;
 
 import christmas.constant.GiveawayEvent;
+import christmas.domain.Discount.Discount;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 public class GiveawayEvents {
 

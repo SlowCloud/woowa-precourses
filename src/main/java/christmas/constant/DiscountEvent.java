@@ -13,18 +13,18 @@ public enum DiscountEvent {
 
     CHRISTMAS_D_DAY(
             "크리스마스 디데이 할인",
-            today -> today.between(1, 25),
-            (today, orders) -> 1000 + (today.getToday() - 1) * 100
+            today -> today.between(Constants.CHRISTMAS_D_DAY_FROM, Constants.CHRISTMAS_D_DAY_TO),
+            (today, orders) -> Constants.D_DAY_DISCOUNT_BASE + (today.getToday() - 1) * Constants.D_DAY_DISCOUNT_PER_DAY
     ),
     WEEKDAY(
             "평일 할인",
             Today::isWeekday,
-            (today, orders) -> orders.getCourseCount(Course.DESSERT) * 2023
+            (today, orders) -> orders.getCourseCount(Course.DESSERT) * Constants.DESSERT_MAIN_DISH_DISCOUNT
     ),
     WEEKEND(
             "주말 할인",
             Today::isWeekend,
-            (today, orders) -> orders.getCourseCount(Course.MAIN) * 2023
+            (today, orders) -> orders.getCourseCount(Course.MAIN) * Constants.DESSERT_MAIN_DISH_DISCOUNT
     ),
     SPECIAL(
             "특별 할인",
@@ -32,6 +32,7 @@ public enum DiscountEvent {
             (today, orders) -> 1000
     );
 
+    public static final int PRICE_LOWER_BOUND = 10_000;
     private final String eventName;
     private final Function<Today, Boolean> validator;
     private final BiFunction<Today, Orders, Integer> discountCalculator;
@@ -47,7 +48,7 @@ public enum DiscountEvent {
     }
 
     public static List<DiscountEvent> getAvailableEvents(Today today, int price) {
-        if (price < 10_000) {
+        if (price < PRICE_LOWER_BOUND) {
             return List.of();
         }
         return Arrays.stream(DiscountEvent.values())
@@ -59,4 +60,11 @@ public enum DiscountEvent {
         return new Discount(eventName, discountCalculator.apply(today, orders));
     }
 
+    private static class Constants {
+        public static final int CHRISTMAS_D_DAY_FROM = 1;
+        public static final int CHRISTMAS_D_DAY_TO = 25;
+        public static final int DESSERT_MAIN_DISH_DISCOUNT = 2023;
+        public static final int D_DAY_DISCOUNT_BASE = 1000;
+        public static final int D_DAY_DISCOUNT_PER_DAY = 100;
+    }
 }

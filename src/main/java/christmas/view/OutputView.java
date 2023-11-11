@@ -18,31 +18,37 @@ public class OutputView {
     public void printOrderedMenus(String orderedMenus) {
         System.out.println("<주문 메뉴>");
         System.out.println(orderedMenus);
+        System.out.println();
     }
 
     public void printTotalPriceBeforeDiscount(int totalPrice) {
         System.out.println("<할인 전 총주문 금액>");
         System.out.printf("%,d원%n", totalPrice);
+        System.out.println();
     }
 
     public void printGiveaway(String giveawayMessage) {
         System.out.println("<증정 메뉴>");
         System.out.println(giveawayMessage);
+        System.out.println();
     }
 
     public void printDiscounts(String discountsMessage) {
         System.out.println("<혜택 내역>");
         System.out.println(discountsMessage);
+        System.out.println();
     }
 
     public void printTotalDiscounts(int totalDiscounts) {
         System.out.println("<총혜택 금액>");
         System.out.printf("%,d원%n", totalDiscounts);
+        System.out.println();
     }
 
     public void printTotalPriceAfterDiscount(int discountedTotalPrice) {
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.printf("%,d원%n", discountedTotalPrice);
+        System.out.println();
     }
 
     public void printBadge(String badgeName) {

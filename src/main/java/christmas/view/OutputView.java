@@ -1,11 +1,5 @@
 package christmas.view;
 
-import christmas.domain.Discount;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
-
 public class OutputView {
 
     public void printHeader() {
@@ -39,6 +33,11 @@ public class OutputView {
     public void printTotalDiscounts(int totalDiscounts) {
         System.out.println("<총혜택 금액>");
         System.out.printf("-%,d원%n", totalDiscounts);
+    }
+
+    public void printTotalPriceAfterDiscount(int discountedTotalPrice) {
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.printf("%,d원%n", discountedTotalPrice);
     }
 
 }

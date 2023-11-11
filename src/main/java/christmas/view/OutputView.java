@@ -1,5 +1,7 @@
 package christmas.view;
 
+import java.util.stream.Stream;
+
 public class OutputView {
 
     public void printHeader() {
@@ -33,9 +35,10 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printDiscounts(String discountsMessage) {
+    public void printDiscounts(String... discountsMessages) {
         System.out.println("<혜택 내역>");
-        System.out.println(discountsMessage);
+        Stream.of(discountsMessages)
+                .forEach(System.out::println);
         System.out.println();
     }
 

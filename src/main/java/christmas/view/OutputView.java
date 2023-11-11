@@ -20,4 +20,9 @@ public class OutputView {
         System.out.printf("%,d원%n", totalPrice);
     }
 
+    public void printGiveaway(String giveawayMessage) {
+        System.out.println("<증정 메뉴>");
+        System.out.println(giveawayMessage);
+    }
+
 }

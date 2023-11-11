@@ -1,7 +1,9 @@
 package christmas.controller;
 
-import christmas.domain.Orders;
-import christmas.domain.Today;
+import christmas.constant.Badge;
+import christmas.constant.DiscountEvent;
+import christmas.constant.GiveawayEvent;
+import christmas.domain.*;
 import christmas.service.OrderService;
 import christmas.service.TodayService;
 import christmas.view.InputView;
@@ -35,9 +37,23 @@ public class ChristmasController {
         Today today = tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
         Orders orders = tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
 
+        GiveawayEvents giveawayEvents = new GiveawayEvents(GiveawayEvent.getAvailableEvents(orders.getTotalPrice()));
+        DiscountEvents discountEvents = new DiscountEvents(DiscountEvent.getAvailableEvents(today));
+
+        Discounts discounts = new Discounts();
+        discounts.add(discountEvents.getDiscounts(today, orders));
+        discounts.add(giveawayEvents.getDiscounts());
+
+        Badge badge = Badge.findBadge(discounts.getTotalDiscounts());
+
         outputView.printHeader();
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
+        outputView.printGiveaway(giveawayEvents.getGiveawayMessage());
+        outputView.printDiscounts(discounts.getDiscountMessage());
+        outputView.printTotalDiscounts(discounts.getTotalDiscounts());
+        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() - discounts.getTotalDiscounts());
+        outputView.printBadge(badge.getBadgeName());
 
     }
 

@@ -13,22 +13,22 @@ public enum DiscountEvent {
 
     CHRISTMAS_D_DAY(
             "크리스마스 디데이 할인",
-            today -> today.between(Constants.CHRISTMAS_D_DAY_FROM, Constants.CHRISTMAS_D_DAY_TO),
+            today -> today.is(Calender.BEFORE_CHRISTMAS),
             (today, orders) -> Constants.D_DAY_DISCOUNT_BASE + (today.getToday() - 1) * Constants.D_DAY_DISCOUNT_PER_DAY
     ),
     WEEKDAY(
             "평일 할인",
-            Today::isWeekday,
+            today -> today.is(Calender.WEEKDAY),
             (today, orders) -> orders.getCourseCount(Course.DESSERT) * Constants.DESSERT_MAIN_DISH_DISCOUNT
     ),
     WEEKEND(
             "주말 할인",
-            Today::isWeekend,
+            today -> today.is(Calender.WEEKEND),
             (today, orders) -> orders.getCourseCount(Course.MAIN) * Constants.DESSERT_MAIN_DISH_DISCOUNT
     ),
     SPECIAL(
             "특별 할인",
-            today -> today.isChristmas() || today.isSunday(),
+            today -> today.is(Calender.CHRISTMAS) || today.is(Calender.SUNDAY),
             (today, orders) -> 1000
     );
 
@@ -61,8 +61,6 @@ public enum DiscountEvent {
     }
 
     private static class Constants {
-        public static final int CHRISTMAS_D_DAY_FROM = 1;
-        public static final int CHRISTMAS_D_DAY_TO = 25;
         public static final int DESSERT_MAIN_DISH_DISCOUNT = 2023;
         public static final int D_DAY_DISCOUNT_BASE = 1000;
         public static final int D_DAY_DISCOUNT_PER_DAY = 100;

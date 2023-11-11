@@ -37,7 +37,7 @@ public class OutputView {
 
     public void printTotalDiscounts(int totalDiscounts) {
         System.out.println("<총혜택 금액>");
-        System.out.printf("-%,d원%n", totalDiscounts);
+        System.out.printf("%,d원%n", totalDiscounts);
     }
 
     public void printTotalPriceAfterDiscount(int discountedTotalPrice) {

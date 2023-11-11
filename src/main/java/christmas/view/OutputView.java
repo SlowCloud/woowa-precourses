@@ -31,9 +31,14 @@ public class OutputView {
         System.out.println(giveawayMessage);
     }
 
-    public final void printDiscounts(String discountsMessage) {
+    public void printDiscounts(String discountsMessage) {
         System.out.println("<혜택 내역>");
         System.out.println(discountsMessage);
+    }
+
+    public void printTotalDiscounts(int totalDiscounts) {
+        System.out.println("<총혜택 금액>");
+        System.out.printf("-%,d원%n", totalDiscounts);
     }
 
 }

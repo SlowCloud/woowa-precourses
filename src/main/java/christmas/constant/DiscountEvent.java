@@ -14,7 +14,7 @@ public enum DiscountEvent {
     CHRISTMAS_D_DAY(
             "크리스마스 디데이 할인",
             today -> today.between(1, 25),
-            (today, orders) -> 1000L + today.getToday() * 100L
+            (today, orders) -> 1000L + (today.getToday() - 1) * 100L
     ),
     WEEKDAY(
             "평일 할인",

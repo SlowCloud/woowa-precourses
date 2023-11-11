@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.constant.GiveawayEvent;
+import christmas.constant.MessageJoiner;
 import christmas.domain.Discount.Discount;
 
 import java.util.List;
@@ -15,17 +16,10 @@ public class GiveawayEvents {
     }
 
     public String getGiveawayMessage() {
-
-        if (giveawayEvents.isEmpty()) {
-            return NON_GIVEAWAY_MESSAGE;
-        }
-
         List<String> messages = giveawayEvents.stream()
                 .map(GiveawayEvent::getGiveawayMessage)
                 .toList();
-
-        return String.join("\n", messages);
-
+        return MessageJoiner.join(messages);
     }
 
     public List<Discount> getDiscounts() {

@@ -81,10 +81,10 @@ public class ChristmasController {
             Today today,
             Orders orders
     ) {
-        DiscountsBuilder discountsBuilder = new DiscountsBuilder();
-        discountsBuilder.add(discountEvents.getDiscounts(today, orders));
-        discountsBuilder.add(giveawayEvents.getDiscounts());
-        return discountsBuilder.build();
+        return new DiscountsBuilder()
+                .add(discountEvents.getDiscounts(today, orders))
+                .add(giveawayEvents.getDiscounts())
+                .build();
     }
 
     private void printReceipt(

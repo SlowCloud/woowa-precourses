@@ -11,8 +11,9 @@ public class DiscountsBuilder {
         discounts = new ArrayList<>();
     }
 
-    public void add(List<Discount> discounts) {
+    public DiscountsBuilder add(List<Discount> discounts) {
         this.discounts.addAll(discounts);
+        return this;
     }
 
     public Discounts build() {

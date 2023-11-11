@@ -10,6 +10,11 @@ public class OutputView {
         System.out.println(e.getMessage());
     }
 
+    public void printEventPreviewMessage() {
+        System.out.println("12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
+        System.out.println();
+    }
+
     public void printOrderedMenus(String orderedMenus) {
         System.out.println("<주문 메뉴>");
         System.out.println(orderedMenus);

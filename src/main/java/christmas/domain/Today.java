@@ -21,7 +21,7 @@ public class Today {
     }
 
     public boolean is(Calender calender) {
-        return calender.validate(today);
+        return calender.verify(today);
     }
 
     public int getToday() {

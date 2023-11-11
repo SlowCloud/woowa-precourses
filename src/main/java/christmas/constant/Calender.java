@@ -14,14 +14,14 @@ public enum Calender {
         return day % Constants.WEEK_LENGTH == dayOfWeek;
     }
 
-    private final Function<Integer, Boolean> validator;
+    private final Function<Integer, Boolean> verifier;
 
-    Calender(Function<Integer, Boolean> validator) {
-        this.validator = validator;
+    Calender(Function<Integer, Boolean> verifier) {
+        this.verifier = verifier;
     }
 
-    public boolean validate(int day) {
-        return validator.apply(day);
+    public boolean verify(int day) {
+        return verifier.apply(day);
     }
 
     private static class Constants {

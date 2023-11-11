@@ -5,10 +5,10 @@ import java.util.function.Function;
 
 public enum Badge {
 
-    NOTHING("없음", discounted -> discounted < 5000),
-    STAR("별", discounted -> discounted < 10000),
-    TREE("트리", discounted -> discounted < 20000),
-    SANTA("산타", discounted -> true);
+    NOTHING("없음", discounted -> discounted > -5000),
+    STAR("별", discounted -> discounted > -10000),
+    TREE("트리", discounted -> discounted > -20000),
+    SANTA("산타", discounted -> discounted <= -20000);
 
     private final String badgeName;
     private final Function<Integer, Boolean> validator;

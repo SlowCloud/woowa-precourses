@@ -29,7 +29,7 @@ public enum DiscountEvent {
     SPECIAL(
             "특별 할인",
             today -> today.isChristmas() || today.isSunday(),
-            (today, orders) -> 1000L
+            (today, orders) -> 1000
     );
 
     private final String eventName;

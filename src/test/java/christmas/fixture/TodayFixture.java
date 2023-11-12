@@ -9,7 +9,9 @@ public enum TodayFixture {
     SUNDAY(3),
     CHRISTMAS(25),
     BEFORE_CHRISTMAS(1),
-    AFTER_CHRISTMAS(26);
+    AFTER_CHRISTMAS(26),
+    NOT_SPECIAL(3),
+    FIRST_DAY(1);
 
     private final int day;
 

@@ -50,11 +50,11 @@ public class ChristmasController {
                 .buildWeekdayEvent(today, orders)
                 .buildWeekendEvent(today, orders)
                 .buildSpecialEvent(today)
+                .buildChampagneGiveawayEvent(orders)
                 .build();
 
-        Discounts discounts = events.getTotalDiscounts();
-
-        Badge badge = getBadge(discountEventDiscounts, giveawayDiscounts);
+        Discounts totalDiscounts = events.getTotalDiscounts();
+        Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscounts());
 
         printReceipt(orders, giveawayEvents, discountEventDiscounts, giveawayDiscounts, badge);
 
@@ -66,24 +66,6 @@ public class ChristmasController {
 
     private Orders getOrders() {
         return tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
-    }
-
-    private GiveawayEvents getGiveawayEvents(Orders orders) {
-        return new GiveawayEvents(
-                GiveawayEvent.getAvailableEvents(orders.getTotalPrice())
-        );
-    }
-
-    private DiscountEvents getDiscountEvents(Today today, Orders orders) {
-        return new DiscountEvents(
-                DiscountEvent.getAvailableEvents(today, orders.getTotalPrice())
-        );
-    }
-
-    private static Badge getBadge(Discounts discountEventDiscounts, Discounts giveawayDiscounts) {
-        return Badge.findBadge(
-                discountEventDiscounts.getTotalDiscounts() + giveawayDiscounts.getTotalDiscounts()
-        );
     }
 
     private void printReceipt(Orders orders, GiveawayEvents giveawayEvents, Discounts discountEventDiscounts, Discounts giveawayDiscounts, Badge badge) {

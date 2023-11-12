@@ -29,4 +29,12 @@ public class Events {
                 .toList());
     }
 
+    public Discounts getDiscountsExceptGiveaways() {
+        List<Discount> discounts = events.stream()
+                .filter(event -> !(event instanceof GiveawayEvent))
+                .map(Event::getDiscount)
+                .toList();
+        return new Discounts(discounts);
+    }
+
 }

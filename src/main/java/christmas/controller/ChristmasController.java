@@ -52,8 +52,7 @@ public class ChristmasController {
                 .buildSpecialEvent(today)
                 .build();
 
-        Discounts discountEventDiscounts = new Discounts(discountEvents.getDiscounts(today, orders));
-        Discounts giveawayDiscounts = new Discounts(giveawayEvents.getDiscounts());
+        Discounts discounts = events.getTotalDiscounts();
 
         Badge badge = getBadge(discountEventDiscounts, giveawayDiscounts);
 

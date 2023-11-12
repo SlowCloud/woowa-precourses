@@ -2,8 +2,8 @@ package christmas.domain.Event;
 
 import christmas.domain.Discount.Discount;
 
-public abstract class Event {
+public interface Event {
 
-    public abstract Discount getDiscount();
+    public Discount getDiscount();
 
 }

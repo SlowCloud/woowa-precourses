@@ -2,6 +2,7 @@ package christmas.domain.Event;
 
 import christmas.constant.Menu;
 import christmas.domain.Discount.Discount;
+import christmas.domain.Giveaway.Giveaway;
 
 public class ChampagneGiveawayEvent implements GiveawayEvent {
 
@@ -29,6 +30,11 @@ public class ChampagneGiveawayEvent implements GiveawayEvent {
     @Override
     public Discount getDiscount() {
         return new Discount("증정 이벤트", champagne.getPrice());
+    }
+
+    @Override
+    public Giveaway getGiveaway() {
+        return new Giveaway(champagne.getMenuName(), count);
     }
 
 }

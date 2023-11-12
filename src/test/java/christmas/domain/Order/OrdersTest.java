@@ -41,7 +41,7 @@ class OrdersTest {
         void givenOrdersAreOver20() {
             Assertions.assertThatThrownBy(
                     () -> new Orders(List.of(
-                            OrderFixture.OVER_20.getOrder()))
+                            OrderFixture.COUNT_OVER_20.getOrder()))
             ).isInstanceOf(IllegalArgumentException.class);
         }
 

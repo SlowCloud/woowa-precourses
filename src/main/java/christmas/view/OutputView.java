@@ -35,7 +35,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printDiscounts(String... discountsMessages) {
+    public void printDiscountMessages(String... discountsMessages) {
         System.out.println("<혜택 내역>");
         Stream.of(discountsMessages)
                 .forEach(System.out::println);

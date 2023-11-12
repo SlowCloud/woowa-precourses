@@ -2,13 +2,15 @@ package christmas.domain.Event;
 
 import christmas.constant.Calender;
 import christmas.domain.Discount.Discount;
+import christmas.domain.Order.Orders;
 import christmas.domain.Today;
 
 public class SpecialEvent implements Event {
 
     private static final String EVENT_NAME = "특별 할인";
 
-    public SpecialEvent(Today today) {
+    public SpecialEvent(Today today, Orders orders) {
+        Event.validatePrice(orders.getTotalPrice());
         validateToday(today);
     }
 
@@ -18,9 +20,9 @@ public class SpecialEvent implements Event {
         }
     }
 
-    public static Event createInstance(Today today) {
+    public static Event createInstance(Today today, Orders orders) {
         try {
-            return new SpecialEvent(today);
+            return new SpecialEvent(today, orders);
         } catch (IllegalArgumentException e) {
             return null;
         }

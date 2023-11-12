@@ -13,6 +13,7 @@ public class WeekdayEvent implements Event {
     private final int mainDishCount;
 
     public WeekdayEvent(Today today, Orders orders) {
+        Event.validatePrice(orders.getTotalPrice());
         validateToday(today);
         this.mainDishCount = orders.getCourseCount(Course.MAIN);
     }

@@ -10,10 +10,11 @@ public class ChampagneGiveawayEvent implements GiveawayEvent {
     private final int count = 1;
 
     public ChampagneGiveawayEvent(int price) {
-        validatePrice(price);
+        Event.validatePrice(price);
+        validateAvailablePrice(price);
     }
 
-    private void validatePrice(int price) {
+    private void validateAvailablePrice(int price) {
         if(price < 120_000) {
             throw new IllegalArgumentException();
         }

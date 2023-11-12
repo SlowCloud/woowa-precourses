@@ -2,6 +2,7 @@ package christmas.domain.Event;
 
 import christmas.constant.Calender;
 import christmas.domain.Discount.Discount;
+import christmas.domain.Order.Orders;
 import christmas.domain.Today;
 
 public class ChristmasDDayEvent implements Event {
@@ -11,7 +12,8 @@ public class ChristmasDDayEvent implements Event {
     private static final int DISCOUNT_PER_DAY = 100;
     private final int today;
 
-    public ChristmasDDayEvent(Today today) {
+    public ChristmasDDayEvent(Today today, Orders orders) {
+        Event.validatePrice(orders.getTotalPrice());
         validateToday(today);
         this.today = today.getToday();
     }
@@ -22,9 +24,9 @@ public class ChristmasDDayEvent implements Event {
         }
     }
 
-    public static Event createInstance(Today today) {
+    public static Event createInstance(Today today, Orders orders) {
         try {
-            return new ChristmasDDayEvent(today);
+            return new ChristmasDDayEvent(today, orders);
         } catch (IllegalArgumentException e) {
             return null;
         }

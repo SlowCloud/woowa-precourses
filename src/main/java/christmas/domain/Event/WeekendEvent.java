@@ -13,6 +13,7 @@ public class WeekendEvent implements Event {
     private final int dessertCount;
 
     public WeekendEvent(Today today, Orders orders) {
+        Event.validatePrice(orders.getTotalPrice());
         validateToday(today);
         this.dessertCount = orders.getCourseCount(Course.DESSERT);
     }

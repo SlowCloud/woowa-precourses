@@ -15,8 +15,8 @@ public class EventsBuilder {
         events = new ArrayList<>();
     }
 
-    public EventsBuilder buildChristmasDDayEvent(Today today) {
-        events.add(ChristmasDDayEvent.createInstance(today));
+    public EventsBuilder buildChristmasDDayEvent(Today today, Orders orders) {
+        events.add(ChristmasDDayEvent.createInstance(today, orders));
         return this;
     }
 
@@ -30,8 +30,8 @@ public class EventsBuilder {
         return this;
     }
 
-    public EventsBuilder buildSpecialEvent(Today today) {
-        events.add(SpecialEvent.createInstance(today));
+    public EventsBuilder buildSpecialEvent(Today today, Orders orders) {
+        events.add(SpecialEvent.createInstance(today, orders));
         return this;
     }
 

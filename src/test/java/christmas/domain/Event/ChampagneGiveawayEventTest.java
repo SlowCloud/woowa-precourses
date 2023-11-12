@@ -15,6 +15,7 @@ class ChampagneGiveawayEventTest {
     class createInstance {
 
         @DisplayName("총 구매액이 12만을 넘지 않으면 null을 반환한다.")
+        @Test
         void givenPriceIsLowerThanHundredTwentyThousand() {
             assertNull(ChampagneGiveawayEvent.createInstance(0));
         }

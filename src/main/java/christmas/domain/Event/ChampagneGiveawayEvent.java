@@ -16,7 +16,7 @@ public class ChampagneGiveawayEvent implements GiveawayEvent {
     }
 
     private void validateAvailablePrice(int price) {
-        if(price < GIVEAWAY_AVAILABLE_PRICE) {
+        if (price < GIVEAWAY_AVAILABLE_PRICE) {
             throw new IllegalArgumentException();
         }
     }

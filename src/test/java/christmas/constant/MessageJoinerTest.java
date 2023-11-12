@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MessageJoinerTest {
 
@@ -23,7 +23,7 @@ class MessageJoinerTest {
         @DisplayName("문자열이 입력되면 delimiter를 개행으로 하고 합친다.")
         @Test
         void givenListIsNotEmpty() {
-            assertEquals(MessageJoiner.join(List.of("A","B")), "A\nB");
+            assertEquals(MessageJoiner.join(List.of("A", "B")), "A\nB");
         }
 
     }

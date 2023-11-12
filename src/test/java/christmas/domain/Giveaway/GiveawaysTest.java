@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GiveawaysTest {
 
@@ -23,7 +23,7 @@ class GiveawaysTest {
 
         @DisplayName("메시지를 정상적으로 출력하는지 확인한다.")
         @Test
-        void checkGetGiveawawyMessage() {
+        void checkGetGiveawayMessage() {
             Giveaways giveaways = new Giveaways(List.of(new Giveaway("메시지", 1)));
             assertEquals(giveaways.getGiveawayMessage(), "메시지 1개");
         }

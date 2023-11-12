@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TodayTest {
 
@@ -18,7 +19,7 @@ class TodayTest {
 
         @DisplayName("날짜가 1~31일이 아니면 오류를 반환한다.")
         @ParameterizedTest
-        @ValueSource(ints = {-1,0,32,100})
+        @ValueSource(ints = {-1, 0, 32, 100})
         void givenNumberIsOutOfRange(int number) {
             Assertions.assertThatThrownBy(() -> new Today(number))
                     .isInstanceOf(IllegalArgumentException.class);

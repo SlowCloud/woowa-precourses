@@ -9,7 +9,7 @@ public interface Event {
     public Discount getDiscount();
 
     public static void validatePrice(int price) {
-        if(price < EVENT_AVAILABLE_PRICE) {
+        if (price < EVENT_AVAILABLE_PRICE) {
             throw new IllegalArgumentException();
         }
     }

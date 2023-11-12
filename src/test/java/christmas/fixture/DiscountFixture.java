@@ -17,7 +17,7 @@ public enum DiscountFixture {
     }
 
     public int getDiscountPrice() {
-        return discountPrice;
+        return -discountPrice;
     }
 
     public String getDiscountName() {

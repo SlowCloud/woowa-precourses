@@ -34,16 +34,16 @@ public enum DiscountEvent {
 
     public static final int PRICE_LOWER_BOUND = 10_000;
     private final String eventName;
-    private final Function<Today, Boolean> validator;
+    private final Function<Today, Boolean> verifier;
     private final BiFunction<Today, Orders, Integer> discountCalculator;
 
     DiscountEvent(
             String eventName,
-            Function<Today, Boolean> validator,
+            Function<Today, Boolean> verifier,
             BiFunction<Today, Orders, Integer> discountCalculator
     ) {
         this.eventName = eventName;
-        this.validator = validator;
+        this.verifier = verifier;
         this.discountCalculator = discountCalculator;
     }
 
@@ -52,7 +52,7 @@ public enum DiscountEvent {
             return List.of();
         }
         return Arrays.stream(DiscountEvent.values())
-                .filter(discountEvent -> discountEvent.validator.apply(today))
+                .filter(discountEvent -> discountEvent.verifier.apply(today))
                 .toList();
     }
 

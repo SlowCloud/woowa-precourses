@@ -2,6 +2,7 @@ package christmas.domain.Event;
 
 import christmas.domain.Discount.Discount;
 import christmas.domain.Discount.Discounts;
+import christmas.domain.Giveaway.Giveaways;
 
 import java.util.List;
 
@@ -20,11 +21,12 @@ public class Events {
         return new Discounts(discounts);
     }
 
-    public List<GiveawayEvent> getGiveawayEvents() {
-        return events.stream()
+    public Giveaways getGiveaways() {
+        return new Giveaways(events.stream()
                 .filter(event -> event instanceof GiveawayEvent)
                 .map(event -> (GiveawayEvent) event)
-                .toList();
+                .map(GiveawayEvent::getGiveaway)
+                .toList());
     }
 
 }

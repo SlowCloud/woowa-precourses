@@ -29,7 +29,6 @@ public enum Calender {
         public static final int FRIDAY = 1;
         public static final int SATURDAY = 2;
         public static final int SUNDAY = 3;
-        public static final int MONDAY = 4;
         public static final int WEEK_LENGTH = 7;
     }
 

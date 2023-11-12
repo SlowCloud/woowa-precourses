@@ -1,9 +1,7 @@
 package christmas.domain.Event;
 
 import christmas.constant.Calender;
-import christmas.constant.Course;
 import christmas.domain.Discount.Discount;
-import christmas.domain.Order.Orders;
 import christmas.domain.Today;
 
 public class SpecialEvent implements Event {

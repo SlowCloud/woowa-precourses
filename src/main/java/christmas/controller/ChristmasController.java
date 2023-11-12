@@ -5,8 +5,7 @@ import christmas.constant.DiscountEvent;
 import christmas.constant.GiveawayEvent;
 import christmas.domain.Discount.Discounts;
 import christmas.domain.DiscountEvents;
-import christmas.domain.Event.Event;
-import christmas.domain.Event.EventBuilder;
+import christmas.domain.Event.EventsBuilder;
 import christmas.domain.Event.Events;
 import christmas.domain.GiveawayEvents;
 import christmas.domain.Order.Orders;
@@ -16,7 +15,6 @@ import christmas.service.TodayService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -47,7 +45,7 @@ public class ChristmasController {
         Today today = getToday();
         Orders orders = getOrders();
 
-        Events events = new EventBuilder()
+        Events events = new EventsBuilder()
                 .buildChristmasDDayEvent(today)
                 .buildWeekdayEvent(today, orders)
                 .buildWeekendEvent(today, orders)

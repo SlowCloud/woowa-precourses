@@ -35,10 +35,10 @@ public class EventBuilder {
         return this;
     }
 
-    public List<Event> build() {
-        return events.stream()
+    public Events build() {
+        return new Events(events.stream()
                 .filter(Objects::nonNull)
-                .toList();
+                .toList());
     }
 
 }

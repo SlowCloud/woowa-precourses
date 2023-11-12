@@ -6,6 +6,7 @@ import christmas.domain.Giveaway.Giveaway;
 
 public class ChampagneGiveawayEvent implements GiveawayEvent {
 
+    public static final int GIVEAWAY_AVAILABLE_PRICE = 120_000;
     private final Menu champagne = Menu.CHAMPAGNE;
     private final int count = 1;
 
@@ -15,7 +16,7 @@ public class ChampagneGiveawayEvent implements GiveawayEvent {
     }
 
     private void validateAvailablePrice(int price) {
-        if(price < 120_000) {
+        if(price < GIVEAWAY_AVAILABLE_PRICE) {
             throw new IllegalArgumentException();
         }
     }

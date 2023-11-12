@@ -20,7 +20,7 @@ public class Discounts {
     }
 
     public int getTotalDiscounts() {
-        return -discounts.stream()
+        return discounts.stream()
                 .mapToInt(Discount::getDiscount)
                 .sum();
     }

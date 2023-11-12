@@ -63,7 +63,13 @@ public class ChristmasController {
                 .build();
     }
 
-    private void printReceipt(Orders orders, Giveaways giveaways, Discounts totalDiscounts, Discounts actualDiscounts, Badge badge) {
+    private void printReceipt(
+            Orders orders,
+            Giveaways giveaways,
+            Discounts totalDiscounts,
+            Discounts actualDiscounts,
+            Badge badge
+    ) {
         outputView.printEventPreviewMessage();
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());

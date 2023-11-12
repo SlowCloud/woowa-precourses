@@ -35,6 +35,11 @@ public class EventsBuilder {
         return this;
     }
 
+    public EventsBuilder buildChampagneGiveawayEvent(Orders orders) {
+        events.add(ChampagneGiveawayEvent.createInstance(orders.getTotalPrice()));
+        return this;
+    }
+
     public Events build() {
         return new Events(events.stream()
                 .filter(Objects::nonNull)

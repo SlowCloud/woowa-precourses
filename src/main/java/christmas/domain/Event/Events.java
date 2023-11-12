@@ -20,4 +20,11 @@ public class Events {
         return new Discounts(discounts);
     }
 
+    public List<GiveawayEvent> getGiveawayEvents() {
+        return events.stream()
+                .filter(event -> event instanceof GiveawayEvent)
+                .map(event -> (GiveawayEvent) event)
+                .toList();
+    }
+
 }

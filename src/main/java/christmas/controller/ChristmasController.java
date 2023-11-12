@@ -7,6 +7,7 @@ import christmas.domain.Discount.Discounts;
 import christmas.domain.DiscountEvents;
 import christmas.domain.Event.EventsBuilder;
 import christmas.domain.Event.Events;
+import christmas.domain.Giveaway.Giveaways;
 import christmas.domain.GiveawayEvents;
 import christmas.domain.Order.Orders;
 import christmas.domain.Today;
@@ -54,9 +55,18 @@ public class ChristmasController {
                 .build();
 
         Discounts totalDiscounts = events.getTotalDiscounts();
+        Giveaways giveaways = events.getGiveaways();
         Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscounts());
+        Discounts actualDiscounts = events.getDiscountsExceptGiveaways();
 
-        printReceipt(orders, giveawayEvents, discountEventDiscounts, giveawayDiscounts, badge);
+        outputView.printEventPreviewMessage();
+        outputView.printOrderedMenus(orders.getOrderedMenusMessage());
+        outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
+        outputView.printGiveaway(giveaways.getGiveawayMessage());
+        outputView.printDiscounts(totalDiscounts.getDiscountMessage());
+        outputView.printTotalDiscounts(totalDiscounts.getTotalDiscounts());
+        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + actualDiscounts.getTotalDiscounts());
+        outputView.printBadge(badge.getBadgeName());
 
     }
 
@@ -66,21 +76,6 @@ public class ChristmasController {
 
     private Orders getOrders() {
         return tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
-    }
-
-    private void printReceipt(Orders orders, GiveawayEvents giveawayEvents, Discounts discountEventDiscounts, Discounts giveawayDiscounts, Badge badge) {
-        outputView.printEventPreviewMessage();
-        outputView.printOrderedMenus(orders.getOrderedMenusMessage());
-        outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
-        outputView.printGiveaway(giveawayEvents.getGiveawayMessage());
-        outputView.printDiscounts(
-                discountEventDiscounts.getDiscountMessage(), giveawayDiscounts.getDiscountMessage()
-        );
-        outputView.printTotalDiscounts(
-                discountEventDiscounts.getTotalDiscounts() + giveawayDiscounts.getTotalDiscounts()
-        );
-        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + discountEventDiscounts.getTotalDiscounts());
-        outputView.printBadge(badge.getBadgeName());
     }
 
     private <T> T tryCatchLoop(Supplier<T> supplier) {

@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("MessageJoiner 테스트")
 class MessageJoinerTest {
 
     @DisplayName("join 테스트")

@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Badge 테스트")
 class BadgeTest {
 
     @DisplayName("findBadge 테스트")

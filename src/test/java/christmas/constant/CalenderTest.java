@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@DisplayName("Calender 테스트")
 class CalenderTest {
 
     @DisplayName("verify 테스트")

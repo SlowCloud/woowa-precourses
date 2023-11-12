@@ -1,14 +1,10 @@
 package christmas.controller;
 
 import christmas.constant.Badge;
-import christmas.constant.DiscountEvent;
-import christmas.constant.GiveawayEvent;
 import christmas.domain.Discount.Discounts;
-import christmas.domain.DiscountEvents;
 import christmas.domain.Event.EventsBuilder;
 import christmas.domain.Event.Events;
 import christmas.domain.Giveaway.Giveaways;
-import christmas.domain.GiveawayEvents;
 import christmas.domain.Order.Orders;
 import christmas.domain.Today;
 import christmas.service.OrderService;
@@ -46,19 +42,28 @@ public class ChristmasController {
         Today today = getToday();
         Orders orders = getOrders();
 
-        Events events = new EventsBuilder()
-                .buildChristmasDDayEvent(today)
-                .buildWeekdayEvent(today, orders)
-                .buildWeekendEvent(today, orders)
-                .buildSpecialEvent(today)
-                .buildChampagneGiveawayEvent(orders)
-                .build();
+        Events events = getEvents(today, orders);
 
         Discounts totalDiscounts = events.getTotalDiscounts();
         Giveaways giveaways = events.getGiveaways();
         Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscounts());
         Discounts actualDiscounts = events.getDiscountsExceptGiveaways();
 
+        printReceipt(orders, giveaways, totalDiscounts, actualDiscounts, badge);
+
+    }
+
+    private static Events getEvents(Today today, Orders orders) {
+        return new EventsBuilder()
+                .buildChristmasDDayEvent(today)
+                .buildWeekdayEvent(today, orders)
+                .buildWeekendEvent(today, orders)
+                .buildSpecialEvent(today)
+                .buildChampagneGiveawayEvent(orders)
+                .build();
+    }
+
+    private void printReceipt(Orders orders, Giveaways giveaways, Discounts totalDiscounts, Discounts actualDiscounts, Badge badge) {
         outputView.printEventPreviewMessage();
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
@@ -67,7 +72,6 @@ public class ChristmasController {
         outputView.printTotalDiscounts(totalDiscounts.getTotalDiscounts());
         outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + actualDiscounts.getTotalDiscounts());
         outputView.printBadge(badge.getBadgeName());
-
     }
 
     private Today getToday() {

@@ -10,11 +10,11 @@ public class WeekdayEvent implements Event {
 
     private static final String EVENT_NAME = "평일 할인";
 
-    private final int maindishCount;
+    private final int mainDishCount;
 
     public WeekdayEvent(Today today, Orders orders) {
         validateToday(today);
-        this.maindishCount = orders.getCourseCount(Course.MAIN);
+        this.mainDishCount = orders.getCourseCount(Course.MAIN);
     }
 
     private void validateToday(Today today) {
@@ -33,7 +33,7 @@ public class WeekdayEvent implements Event {
 
     @Override
     public Discount getDiscount() {
-        return new Discount(EVENT_NAME, maindishCount * 2023);
+        return new Discount(EVENT_NAME, mainDishCount * 2023);
     }
 
 }

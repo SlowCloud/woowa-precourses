@@ -12,7 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -41,14 +40,14 @@ class ChristmasDDayEventTest {
         @DisplayName("크리스마스 디데이 할인이 제대로 적용되는지 확인한다.")
         @ParameterizedTest
         @CsvSource(value = {"1,1000", "2,1100"})
-        void test(int day, int expectedDiscount) {
+        void checkGetDiscount(int day, int expectedDiscount) {
 
-            Event christmasDDayEvent = ChristmasDDayEvent.createInstance(
+            DiscountEvent discountEvent = new ChristmasDDayEvent(
                     new Today(day),
                     new Orders(List.of(OrderFixture.PRICE_OVER_20000.getOrder()))
             );
 
-            Discount discount = Objects.requireNonNull(christmasDDayEvent).getDiscount();
+            Discount discount = discountEvent.getDiscount();
             Discount expected = new Discount("크리스마스 디데이 할인", expectedDiscount);
 
             assertEquals(discount.getMessage(), expected.getMessage());

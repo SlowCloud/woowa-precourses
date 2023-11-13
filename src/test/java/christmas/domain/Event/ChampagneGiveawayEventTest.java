@@ -1,6 +1,7 @@
 package christmas.domain.Event;
 
 import christmas.domain.Discount.Discount;
+import christmas.domain.Discount.Discounts;
 import christmas.domain.Giveaway.Giveaway;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -30,9 +31,9 @@ class ChampagneGiveawayEventTest {
         @DisplayName("정상적으로 Discount를 반환하는지 확인한다.")
         @Test
         void checkGetDiscount() {
-            ChampagneGiveawayEvent champagneGiveawayEvent = new ChampagneGiveawayEvent(120_000);
+            DiscountEvent discountEvent = new ChampagneGiveawayEvent(120_000);
             assertEquals(
-                    champagneGiveawayEvent.getDiscount().getMessage(),
+                    discountEvent.getDiscount().getMessage(),
                     new Discount("증정 이벤트", 25_000).getMessage()
             );
         }
@@ -45,10 +46,10 @@ class ChampagneGiveawayEventTest {
 
         @DisplayName("정상적으로 Giveaway를 반환하는지 확인한다.")
         @Test
-        void checkGetDiscount() {
-            ChampagneGiveawayEvent champagneGiveawayEvent = new ChampagneGiveawayEvent(120_000);
+        void checkGetGiveaway() {
+            GiveawayEvent giveawayEvent = new ChampagneGiveawayEvent(120_000);
             assertEquals(
-                    champagneGiveawayEvent.getGiveaway().getMessage(),
+                    giveawayEvent.getGiveaway().getMessage(),
                     new Giveaway("샴페인", 1).getMessage()
             );
         }

@@ -5,7 +5,7 @@ import christmas.domain.Today;
 public enum TodayFixture {
 
     WEEKEND(2),
-    WEEKDAY(1),
+    WEEKDAY(4),
     SUNDAY(3),
     CHRISTMAS(25),
     BEFORE_CHRISTMAS(1),

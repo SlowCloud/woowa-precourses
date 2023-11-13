@@ -33,7 +33,7 @@ class WeekendEventTest {
         void givenOrdersNotContainMain() {
             assertNull(WeekdayEvent.createInstance(
                     TodayFixture.WEEKEND.getToday(),
-                    new Orders(List.of(OrderFixture.PRICE_OVER_20000.getOrder()))
+                    new Orders(List.of(OrderFixture.MAIN.getOrder()))
             ));
         }
 

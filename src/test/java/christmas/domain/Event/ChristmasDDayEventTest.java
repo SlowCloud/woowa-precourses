@@ -27,7 +27,7 @@ class ChristmasDDayEventTest {
         void givenTodayIsAfterChristmas() {
             assertNull(ChristmasDDayEvent.createInstance(
                     TodayFixture.AFTER_CHRISTMAS.getToday(),
-                    new Orders(List.of(OrderFixture.PRICE_OVER_20000.getOrder())))
+                    new Orders(List.of(OrderFixture.MAIN.getOrder())))
             );
         }
 
@@ -44,7 +44,7 @@ class ChristmasDDayEventTest {
 
             DiscountEvent discountEvent = new ChristmasDDayEvent(
                     new Today(day),
-                    new Orders(List.of(OrderFixture.PRICE_OVER_20000.getOrder()))
+                    new Orders(List.of(OrderFixture.MAIN.getOrder()))
             );
 
             Discount discount = discountEvent.getDiscount();

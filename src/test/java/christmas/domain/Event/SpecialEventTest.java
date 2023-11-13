@@ -7,7 +7,6 @@ import christmas.fixture.TodayFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ class SpecialEventTest {
         void givenTodayIsNotSpecial() {
             assertNull(SpecialEvent.createInstance(
                     TodayFixture.WEEKEND.getToday(),
-                    new Orders(List.of(OrderFixture.PRICE_OVER_20000.getOrder()))
+                    new Orders(List.of(OrderFixture.MAIN.getOrder()))
             ));
         }
 
@@ -41,7 +40,7 @@ class SpecialEventTest {
 
             DiscountEvent discountEvent = new SpecialEvent(
                     TodayFixture.CHRISTMAS.getToday(),
-                    new Orders(List.of(OrderFixture.PRICE_OVER_20000.getOrder()))
+                    new Orders(List.of(OrderFixture.MAIN.getOrder()))
             );
 
             Discount discount = discountEvent.getDiscount();

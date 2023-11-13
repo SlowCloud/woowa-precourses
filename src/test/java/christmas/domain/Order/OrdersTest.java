@@ -22,8 +22,8 @@ class OrdersTest {
         void GivenOrdersAreDuplicated() {
             Assertions.assertThatThrownBy(
                     () -> new Orders(List.of(
-                            OrderFixture.MUSHROOM_SOUP.getOrder(),
-                            OrderFixture.MUSHROOM_SOUP.getOrder()))
+                            OrderFixture.APPETIZER.getOrder(),
+                            OrderFixture.APPETIZER.getOrder()))
             ).isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -54,7 +54,7 @@ class OrdersTest {
         @DisplayName("메시지를 정상적으로 출력하는지 확인한다.")
         @Test
         void checkGetOrderedMenusMessage() {
-            Orders orders = new Orders(List.of(OrderFixture.MUSHROOM_SOUP.getOrder()));
+            Orders orders = new Orders(List.of(OrderFixture.APPETIZER.getOrder()));
             assertEquals(orders.getOrderedMenusMessage(), "양송이수프 1개");
         }
 
@@ -67,7 +67,7 @@ class OrdersTest {
         @DisplayName("코스에 포함되는 주문의 개수를 계산한다.")
         @Test
         void checkGetCourseCount() {
-            Orders orders = new Orders(List.of(OrderFixture.MUSHROOM_SOUP.getOrder()));
+            Orders orders = new Orders(List.of(OrderFixture.APPETIZER.getOrder()));
             assertEquals(orders.getCourseCount(Course.APPETIZER), 1);
         }
 

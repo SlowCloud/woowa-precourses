@@ -16,7 +16,7 @@ public class Events {
 
     public Discounts getTotalDiscounts() {
         List<Discount> discounts = events.stream()
-                .filter(event -> event instanceof  DiscountEvent)
+                .filter(event -> event instanceof DiscountEvent)
                 .map(event -> (DiscountEvent) event)
                 .map(DiscountEvent::getDiscount)
                 .toList();

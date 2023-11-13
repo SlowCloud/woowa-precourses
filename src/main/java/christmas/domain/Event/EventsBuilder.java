@@ -5,7 +5,6 @@ import christmas.domain.Today;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class EventsBuilder {
 
@@ -24,6 +23,7 @@ public class EventsBuilder {
         this.orders = orders;
         return this;
     }
+
     public Events build() {
         return new Events(buildEvents());
     }

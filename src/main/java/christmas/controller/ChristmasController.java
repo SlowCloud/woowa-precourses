@@ -41,7 +41,6 @@ public class ChristmasController {
 
         Today today = getToday();
         Orders orders = getOrders();
-
         Events events = getEvents(today, orders);
 
         Discounts totalDiscounts = events.getTotalDiscounts();

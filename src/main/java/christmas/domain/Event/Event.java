@@ -1,7 +1,5 @@
 package christmas.domain.Event;
 
-import christmas.domain.Discount.Discount;
-
 public interface Event {
 
     int EVENT_AVAILABLE_PRICE = 10_000;

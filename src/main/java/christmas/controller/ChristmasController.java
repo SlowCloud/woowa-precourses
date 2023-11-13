@@ -55,11 +55,8 @@ public class ChristmasController {
 
     private static Events getEvents(Today today, Orders orders) {
         return new EventsBuilder()
-                .buildChristmasDDayEvent(today, orders)
-                .buildWeekdayEvent(today, orders)
-                .buildWeekendEvent(today, orders)
-                .buildSpecialEvent(today, orders)
-                .buildChampagneGiveawayEvent(orders)
+                .today(today)
+                .orders(orders)
                 .build();
     }
 

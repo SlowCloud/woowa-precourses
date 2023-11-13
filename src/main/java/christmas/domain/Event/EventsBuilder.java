@@ -9,41 +9,33 @@ import java.util.Objects;
 
 public class EventsBuilder {
 
-    private final List<Event> events;
+    private Today today;
+    private Orders orders;
 
     public EventsBuilder() {
-        events = new ArrayList<>();
     }
 
-    public EventsBuilder buildChristmasDDayEvent(Today today, Orders orders) {
-        events.add(ChristmasDDayEvent.createInstance(today, orders));
+    public EventsBuilder today(Today today) {
+        this.today = today;
         return this;
     }
 
-    public EventsBuilder buildWeekdayEvent(Today today, Orders orders) {
-        events.add(WeekdayEvent.createInstance(today, orders));
+    public EventsBuilder orders(Orders orders) {
+        this.orders = orders;
         return this;
     }
-
-    public EventsBuilder buildWeekendEvent(Today today, Orders orders) {
-        events.add(WeekendEvent.createInstance(today, orders));
-        return this;
-    }
-
-    public EventsBuilder buildSpecialEvent(Today today, Orders orders) {
-        events.add(SpecialEvent.createInstance(today, orders));
-        return this;
-    }
-
-    public EventsBuilder buildChampagneGiveawayEvent(Orders orders) {
-        events.add(ChampagneGiveawayEvent.createInstance(orders.getTotalPrice()));
-        return this;
-    }
-
     public Events build() {
-        return new Events(events.stream()
-                .filter(Objects::nonNull)
-                .toList());
+        return new Events(buildEvents());
+    }
+
+    private List<Event> buildEvents() {
+        List<Event> events = new ArrayList<>();
+        events.add(ChristmasDDayEvent.createInstance(today, orders));
+        events.add(WeekdayEvent.createInstance(today, orders));
+        events.add(WeekendEvent.createInstance(today, orders));
+        events.add(SpecialEvent.createInstance(today, orders));
+        events.add(ChampagneGiveawayEvent.createInstance(orders.getTotalPrice()));
+        return events;
     }
 
 }

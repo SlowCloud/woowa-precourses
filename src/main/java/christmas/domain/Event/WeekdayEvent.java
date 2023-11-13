@@ -6,7 +6,7 @@ import christmas.domain.Discount.Discount;
 import christmas.domain.Order.Orders;
 import christmas.domain.Today;
 
-public class WeekdayEvent implements Event {
+public class WeekdayEvent implements DiscountEvent {
 
     private static final String EVENT_NAME = "평일 할인";
 

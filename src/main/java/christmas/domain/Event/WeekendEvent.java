@@ -15,11 +15,18 @@ public class WeekendEvent implements DiscountEvent {
     public WeekendEvent(Today today, Orders orders) {
         Event.validatePrice(orders.getTotalPrice());
         validateToday(today);
+        validateDessert(orders);
         this.dessertCount = orders.getCourseCount(Course.DESSERT);
     }
 
     private void validateToday(Today today) {
         if (!today.is(Calender.WEEKEND)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDessert(Orders orders) {
+        if (orders.getCourseCount(Course.DESSERT) == 0) {
             throw new IllegalArgumentException();
         }
     }

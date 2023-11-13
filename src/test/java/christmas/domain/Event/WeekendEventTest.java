@@ -55,7 +55,7 @@ class WeekendEventTest {
             Discount discount = discountEvent.getDiscount();
             Discount expected = new Discount("주말 할인", 2023);
 
-            assertEquals(discount.getMessage(), expected.getMessage());
+            assertEquals(discount, expected);
 
         }
 

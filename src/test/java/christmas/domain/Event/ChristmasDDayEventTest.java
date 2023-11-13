@@ -50,7 +50,7 @@ class ChristmasDDayEventTest {
             Discount discount = discountEvent.getDiscount();
             Discount expected = new Discount("크리스마스 디데이 할인", expectedDiscount);
 
-            assertEquals(discount.getMessage(), expected.getMessage());
+            assertEquals(discount, expected);
 
         }
 

@@ -47,7 +47,7 @@ class SpecialEventTest {
             Discount discount = discountEvent.getDiscount();
             Discount expected = new Discount("특별 할인", 1000);
 
-            assertEquals(discount.getMessage(), expected.getMessage());
+            assertEquals(discount, expected);
 
         }
 

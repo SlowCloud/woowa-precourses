@@ -3,6 +3,7 @@ package christmas.domain.Event;
 import christmas.domain.Discount.Discount;
 import christmas.domain.Order.Orders;
 import christmas.fixture.OrderFixture;
+import christmas.fixture.OrdersFixture;
 import christmas.fixture.TodayFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -24,7 +25,7 @@ class WeekendEventTest {
         void givenTodayIsNotWeekday() {
             assertNull(WeekdayEvent.createInstance(
                     TodayFixture.WEEKDAY.getToday(),
-                    new Orders(List.of(OrderFixture.DESSERT.getOrder()))
+                    OrdersFixture.DESSERT.getOrders()
             ));
         }
 
@@ -33,7 +34,7 @@ class WeekendEventTest {
         void givenOrdersNotContainMain() {
             assertNull(WeekdayEvent.createInstance(
                     TodayFixture.WEEKEND.getToday(),
-                    new Orders(List.of(OrderFixture.MAIN.getOrder()))
+                    OrdersFixture.MAIN.getOrders()
             ));
         }
 
@@ -49,7 +50,7 @@ class WeekendEventTest {
 
             DiscountEvent discountEvent = new WeekendEvent(
                     TodayFixture.WEEKEND.getToday(),
-                    new Orders(List.of(OrderFixture.DESSERT.getOrder()))
+                    OrdersFixture.DESSERT.getOrders()
             );
 
             Discount discount = discountEvent.getDiscount();

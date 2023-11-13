@@ -4,6 +4,7 @@ import christmas.domain.Discount.Discount;
 import christmas.domain.Order.Order;
 import christmas.domain.Order.Orders;
 import christmas.fixture.OrderFixture;
+import christmas.fixture.OrdersFixture;
 import christmas.fixture.TodayFixture;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -24,7 +25,7 @@ class WeekdayEventTest {
         void givenTodayIsNotWeekday() {
             assertNull(WeekdayEvent.createInstance(
                     TodayFixture.WEEKEND.getToday(),
-                    new Orders(List.of(OrderFixture.MAIN.getOrder()))
+                    OrdersFixture.MAIN.getOrders()
             ));
         }
 
@@ -33,7 +34,7 @@ class WeekdayEventTest {
         void givenOrdersNotContainMain() {
             assertNull(WeekdayEvent.createInstance(
                     TodayFixture.WEEKDAY.getToday(),
-                    new Orders(List.of(new Order("양송이수프", 10)))
+                    OrdersFixture.DESSERT.getOrders()
             ));
         }
 

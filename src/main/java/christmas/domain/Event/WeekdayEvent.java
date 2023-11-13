@@ -15,11 +15,18 @@ public class WeekdayEvent implements DiscountEvent {
     public WeekdayEvent(Today today, Orders orders) {
         Event.validatePrice(orders.getTotalPrice());
         validateToday(today);
+        validateMain(orders);
         this.mainDishCount = orders.getCourseCount(Course.MAIN);
     }
 
     private void validateToday(Today today) {
         if (!today.is(Calender.WEEKDAY)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateMain(Orders orders) {
+        if (orders.getCourseCount(Course.MAIN) == 0) {
             throw new IllegalArgumentException();
         }
     }

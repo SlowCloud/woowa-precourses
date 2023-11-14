@@ -70,7 +70,7 @@ public class ChristmasController {
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
         outputView.printGiveaway(giveaways.getGiveawayMessage());
-        outputView.printDiscountMessages(totalDiscounts.getDiscountMessage());
+        outputView.printDiscountsMessage(totalDiscounts.getDiscountsMessage());
         outputView.printTotalDiscounts(totalDiscounts.getTotalDiscounts());
         outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + actualDiscounts.getTotalDiscounts());
         outputView.printBadge(badge.getBadgeName());

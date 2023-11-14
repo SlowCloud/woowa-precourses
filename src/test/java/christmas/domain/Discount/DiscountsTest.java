@@ -20,14 +20,14 @@ class DiscountsTest {
         @Test
         void givenListIsEmpty() {
             Discounts discounts = new Discounts(List.of());
-            assertEquals(discounts.getDiscountMessage(), "없음");
+            assertEquals(discounts.getDiscountsMessage(), "없음");
         }
 
         @DisplayName("메시지가 정상적으로 출력되는지 확인한다.")
         @Test
         void givenListIsNotEmpty() {
             Discounts discounts = new Discounts(List.of(DiscountFixture.BASE.getDiscount()));
-            assertThat(discounts.getDiscountMessage())
+            assertThat(discounts.getDiscountsMessage())
                     .contains(DiscountFixture.BASE.getDiscountMessage());
         }
 

@@ -12,7 +12,7 @@ public class Discounts {
         this.discounts = discounts;
     }
 
-    public String getDiscountMessage() {
+    public String getDiscountsMessage() {
         List<String> messages = discounts.stream()
                 .map(Discount::getMessage)
                 .toList();

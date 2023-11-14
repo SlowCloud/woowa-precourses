@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class WeekendEventTest {
 
@@ -23,7 +22,7 @@ class WeekendEventTest {
         @DisplayName("주말이 아니면 null을 반환한다.")
         @Test
         void givenTodayIsNotWeekday() {
-            assertNull(WeekdayEvent.createInstance(
+            assertNull(WeekendEvent.createInstance(
                     TodayFixture.WEEKDAY.getToday(),
                     OrdersFixture.DESSERT.getOrders()
             ));
@@ -32,9 +31,18 @@ class WeekendEventTest {
         @DisplayName("주문에 디저트가 없으면 null을 반환한다.")
         @Test
         void givenOrdersNotContainMain() {
-            assertNull(WeekdayEvent.createInstance(
+            assertNull(WeekendEvent.createInstance(
                     TodayFixture.WEEKEND.getToday(),
                     OrdersFixture.MAIN.getOrders()
+            ));
+        }
+
+        @DisplayName("주말이고, 주문에 디저트가 있으면 정상적으로 생성한다.")
+        @Test
+        void givenTodayIsWeekendAndGivenOrdersContainDessert() {
+            assertNotNull(WeekendEvent.createInstance(
+                    TodayFixture.WEEKEND.getToday(),
+                    OrdersFixture.DESSERT.getOrders()
             ));
         }
 

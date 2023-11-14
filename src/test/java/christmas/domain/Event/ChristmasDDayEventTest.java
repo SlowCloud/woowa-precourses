@@ -14,8 +14,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ChristmasDDayEventTest {
 
@@ -28,6 +27,14 @@ class ChristmasDDayEventTest {
         void givenTodayIsAfterChristmas() {
             assertNull(ChristmasDDayEvent.createInstance(
                     TodayFixture.AFTER_CHRISTMAS.getToday(),
+                    OrdersFixture.MAIN.getOrders()
+            ));
+        }
+
+        @DisplayName("크리스마스 이전이라면 정상적으로 생성한다.")
+        void givenTdoayIsChristmas() {
+            assertNotNull(ChristmasDDayEvent.createInstance(
+                    TodayFixture.BEFORE_CHRISTMAS.getToday(),
                     OrdersFixture.MAIN.getOrders()
             ));
         }

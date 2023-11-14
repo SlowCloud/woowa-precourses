@@ -38,6 +38,15 @@ class WeekdayEventTest {
             ));
         }
 
+        @DisplayName("평일이고, 주문에 메인 메뉴가 있으면 정상적으로 생성한다.")
+        @Test
+        void givenTodayIsWeekdayAndGivenOrdersContainMain() {
+            assertNotNull(WeekdayEvent.createInstance(
+                    TodayFixture.WEEKDAY.getToday(),
+                    OrdersFixture.MAIN.getOrders()
+            ));
+        }
+
     }
 
     @DisplayName("getDiscount 테스트")

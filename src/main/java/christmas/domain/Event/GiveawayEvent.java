@@ -4,6 +4,6 @@ import christmas.domain.Giveaway.Giveaway;
 
 public interface GiveawayEvent extends Event {
 
-    public Giveaway getGiveaway();
+    Giveaway getGiveaway();
 
 }

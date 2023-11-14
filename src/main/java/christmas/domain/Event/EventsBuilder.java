@@ -5,6 +5,7 @@ import christmas.domain.Today;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EventsBuilder {
 
@@ -35,7 +36,9 @@ public class EventsBuilder {
         events.add(WeekendEvent.createInstance(today, orders));
         events.add(SpecialEvent.createInstance(today, orders));
         events.add(ChampagneGiveawayEvent.createInstance(orders.getTotalPrice()));
-        return events;
+        return events.stream()
+                .filter(Objects::nonNull)
+                .toList();
     }
 
 }

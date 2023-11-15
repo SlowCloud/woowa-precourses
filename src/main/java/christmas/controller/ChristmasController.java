@@ -45,7 +45,7 @@ public class ChristmasController {
 
         Discounts totalDiscounts = events.getTotalDiscounts();
         Giveaways giveaways = events.getGiveaways();
-        Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscounts());
+        Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscountedPrice());
         Discounts actualDiscounts = events.getDiscountsExceptGiveaways();
 
         printReceipt(orders, giveaways, totalDiscounts, actualDiscounts, badge);
@@ -71,8 +71,8 @@ public class ChristmasController {
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
         outputView.printGiveaway(giveaways.getGiveawayMessage());
         outputView.printDiscountsMessage(totalDiscounts.getDiscountsMessage());
-        outputView.printTotalDiscounts(totalDiscounts.getTotalDiscounts());
-        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + actualDiscounts.getTotalDiscounts());
+        outputView.printTotalDiscountedPrice(totalDiscounts.getTotalDiscountedPrice());
+        outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + actualDiscounts.getTotalDiscountedPrice());
         outputView.printBadge(badge.getBadgeName());
     }
 

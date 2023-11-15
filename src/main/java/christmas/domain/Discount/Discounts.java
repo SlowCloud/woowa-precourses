@@ -19,9 +19,9 @@ public class Discounts {
         return MessageJoiner.join(messages);
     }
 
-    public int getTotalDiscounts() {
+    public int getTotalDiscountedPrice() {
         return discounts.stream()
-                .mapToInt(Discount::getDiscount)
+                .mapToInt(Discount::getDiscountedPrice)
                 .sum();
     }
 

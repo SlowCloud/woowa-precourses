@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DiscountsTest {
 
-    @DisplayName("getDiscountMessage 테스트")
+    @DisplayName("getDiscountsMessage 테스트")
     @Nested
-    class getDiscountMessage {
+    class getDiscountsMessage {
 
         @DisplayName("빈 배열을 입력으로 넣으면 \"없음\"을 출력한다.")
         @Test
@@ -33,15 +33,15 @@ class DiscountsTest {
 
     }
 
-    @DisplayName("getTotalDiscounts 테스트")
+    @DisplayName("getTotalDiscountedPrice 테스트")
     @Nested
-    class getTotalDiscounts {
+    class getTotalDiscountedPrice {
 
         @DisplayName("총 혜택액을 잘 계산하는지 확인한다.")
         @Test
         void checkGetTotalDiscounts() {
             Discounts discounts = new Discounts(List.of(DiscountFixture.BASE.getDiscount()));
-            assertEquals(discounts.getTotalDiscounts(), DiscountFixture.BASE.getDiscountPrice());
+            assertEquals(discounts.getTotalDiscountedPrice(), DiscountFixture.BASE.getDiscountPrice());
         }
 
     }

@@ -22,15 +22,15 @@ class DiscountTest {
 
     }
 
-    @DisplayName("getDiscount 테스트")
+    @DisplayName("getDiscountedPrice 테스트")
     @Nested
-    class getDiscount {
+    class getDiscountedPrice {
 
         @DisplayName("반환값이 올바른지 확인한다.")
         @Test
-        void checkGetMessage() {
+        void checkGetDiscountedPrice() {
             Discount discount = DiscountFixture.BASE.getDiscount();
-            assertEquals(discount.getDiscount(), DiscountFixture.BASE.getDiscountPrice());
+            assertEquals(discount.getDiscountedPrice(), DiscountFixture.BASE.getDiscountPrice());
         }
 
     }

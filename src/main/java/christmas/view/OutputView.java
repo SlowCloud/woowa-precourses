@@ -1,7 +1,5 @@
 package christmas.view;
 
-import java.util.stream.Stream;
-
 public class OutputView {
 
     public void printHeader() {
@@ -41,7 +39,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printTotalDiscounts(int totalDiscounts) {
+    public void printTotalDiscountedPrice(int totalDiscounts) {
         System.out.println("<총혜택 금액>");
         System.out.printf("%,d원%n", totalDiscounts);
         System.out.println();

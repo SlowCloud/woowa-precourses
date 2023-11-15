@@ -118,13 +118,13 @@
 
 #### Discount
 - String getMessage()
-- int getDiscount()
+- int getDiscountedPrice()
 - @Override void equals()
 - @Override void hashcode()
 
 #### Discounts
 - String getDiscountsMessage()
-- int getTotalDiscounts()
+- int getTotalDiscountedPrice()
 
 ### Giveaway
 

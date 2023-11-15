@@ -48,6 +48,28 @@ public class ChristmasController {
 
     }
 
+    private Today getToday() {
+        return tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
+    }
+
+    private Orders getOrders() {
+        return tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
+    }
+
+    private <T> T tryCatchLoop(Supplier<T> supplier) {
+        return tryCatchLoop(supplier, outputView::printIllegalArgumentException);
+    }
+
+    private <T> T tryCatchLoop(Supplier<T> supplier, Consumer<IllegalArgumentException> exceptionConsumer) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                exceptionConsumer.accept(e);
+            }
+        }
+    }
+
     private Events getEvents(Today today, Orders orders) {
         return new EventsBuilder()
                 .today(today)
@@ -97,28 +119,6 @@ public class ChristmasController {
         Discounts totalDiscounts = events.getTotalDiscounts();
         Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscountedPrice());
         outputView.printBadge(badge.getBadgeName());
-    }
-
-    private Today getToday() {
-        return tryCatchLoop(() -> todayService.createToday(inputView.getToday()));
-    }
-
-    private Orders getOrders() {
-        return tryCatchLoop(() -> orderService.createOrders(inputView.getOrders()));
-    }
-
-    private <T> T tryCatchLoop(Supplier<T> supplier) {
-        return tryCatchLoop(supplier, outputView::printIllegalArgumentException);
-    }
-
-    private <T> T tryCatchLoop(Supplier<T> supplier, Consumer<IllegalArgumentException> exceptionConsumer) {
-        while (true) {
-            try {
-                return supplier.get();
-            } catch (IllegalArgumentException e) {
-                exceptionConsumer.accept(e);
-            }
-        }
     }
 
 }

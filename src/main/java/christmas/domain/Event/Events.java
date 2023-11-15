@@ -15,12 +15,11 @@ public class Events {
     }
 
     public Discounts getTotalDiscounts() {
-        List<Discount> discounts = events.stream()
+        return new Discounts(events.stream()
                 .filter(event -> event instanceof DiscountEvent)
                 .map(event -> (DiscountEvent) event)
                 .map(DiscountEvent::getDiscount)
-                .toList();
-        return new Discounts(discounts);
+                .toList());
     }
 
     public Giveaways getGiveaways() {
@@ -32,12 +31,11 @@ public class Events {
     }
 
     public Discounts getDiscountsExceptGiveaways() {
-        List<Discount> discounts = events.stream()
+        return new Discounts(events.stream()
                 .filter(event -> !(event instanceof GiveawayEvent))
                 .map(event -> (DiscountEvent) event)
                 .map(DiscountEvent::getDiscount)
-                .toList();
-        return new Discounts(discounts);
+                .toList());
     }
 
 }

@@ -200,7 +200,6 @@
 ### OrderService
 - Orders createOrders(String ordersString)
 - Order createOrder(String orderString)
-- Order createOrder(String menu, String count)
 
 ## View
 

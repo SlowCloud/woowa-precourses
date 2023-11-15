@@ -48,7 +48,7 @@ public class ChristmasController {
 
     }
 
-    private static Events getEvents(Today today, Orders orders) {
+    private Events getEvents(Today today, Orders orders) {
         return new EventsBuilder()
                 .today(today)
                 .orders(orders)

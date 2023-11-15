@@ -43,12 +43,8 @@ public class ChristmasController {
         Orders orders = getOrders();
         Events events = getEvents(today, orders);
 
-        Discounts totalDiscounts = events.getTotalDiscounts();
-        Giveaways giveaways = events.getGiveaways();
-        Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscountedPrice());
-        Discounts actualDiscounts = events.getDiscountsExceptGiveaways();
-
-        printReceipt(orders, giveaways, totalDiscounts, actualDiscounts, badge);
+        outputView.printEventPreviewMessage();
+        printEventBenefits(orders, events);
 
     }
 
@@ -59,20 +55,47 @@ public class ChristmasController {
                 .build();
     }
 
-    private void printReceipt(
-            Orders orders,
-            Giveaways giveaways,
-            Discounts totalDiscounts,
-            Discounts actualDiscounts,
-            Badge badge
-    ) {
-        outputView.printEventPreviewMessage();
+    private void printEventBenefits(Orders orders, Events events) {
+        printOrderedMenus(orders);
+        printTotalPriceBeforeDiscount(orders);
+        printGiveaway(events);
+        printDiscountMessage(events);
+        printTotalDiscountedPrice(events);
+        printTotalPriceAfterDiscount(orders, events);
+        printBadge(events);
+    }
+
+    private void printOrderedMenus(Orders orders) {
         outputView.printOrderedMenus(orders.getOrderedMenusMessage());
+    }
+
+    private void printTotalPriceBeforeDiscount(Orders orders) {
         outputView.printTotalPriceBeforeDiscount(orders.getTotalPrice());
+    }
+
+    private void printGiveaway(Events events) {
+        Giveaways giveaways = events.getGiveaways();
         outputView.printGiveaway(giveaways.getGiveawayMessage());
+    }
+
+    private void printDiscountMessage(Events events) {
+        Discounts totalDiscounts = events.getTotalDiscounts();
         outputView.printDiscountsMessage(totalDiscounts.getDiscountsMessage());
+    }
+
+    private void printTotalDiscountedPrice(Events events) {
+        Discounts totalDiscounts = events.getTotalDiscounts();
         outputView.printTotalDiscountedPrice(totalDiscounts.getTotalDiscountedPrice());
+    }
+
+    private void printTotalPriceAfterDiscount(Orders orders, Events events) {
+        Discounts actualDiscounts = events.getDiscountsExceptGiveaways();
         outputView.printTotalPriceAfterDiscount(orders.getTotalPrice() + actualDiscounts.getTotalDiscountedPrice());
+    }
+
+    private void printBadge(Events events) {
+        Discounts totalDiscounts = events.getTotalDiscounts();
+        Badge badge = Badge.findBadge(totalDiscounts.getTotalDiscountedPrice());
         outputView.printBadge(badge.getBadgeName());
     }
 
@@ -88,10 +111,7 @@ public class ChristmasController {
         return tryCatchLoop(supplier, outputView::printIllegalArgumentException);
     }
 
-    private <T> T tryCatchLoop(
-            Supplier<T> supplier,
-            Consumer<IllegalArgumentException> exceptionConsumer
-    ) {
+    private <T> T tryCatchLoop(Supplier<T> supplier, Consumer<IllegalArgumentException> exceptionConsumer) {
         while (true) {
             try {
                 return supplier.get();

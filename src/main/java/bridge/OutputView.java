@@ -26,7 +26,7 @@ public class OutputView {
 
     public void printWinOrNot(boolean goal) {
         System.out.print("게임 성공 여부: ");
-        if(goal) {
+        if (goal) {
             System.out.println("성공");
             return;
         }

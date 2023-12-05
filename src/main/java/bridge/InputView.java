@@ -40,17 +40,6 @@ public class InputView {
      */
     public boolean readGameCommand() {
         System.out.println("게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)");
-        Map<String, Boolean> convert = new HashMap<>();
-        convert.put("R", true);
-        convert.put("Q", false);
-        String command = Console.readLine();
-        validateGameCommand(command);
-        return convert.get(command);
-    }
-
-    private void validateGameCommand(String command) {
-        if(!command.equals("R") && !command.equals("Q")) {
-            throw new IllegalArgumentException("[ERROR] 입력은 R 또는 Q이어야 합니다!");
-        }
+        return GameCommand.findByName(Console.readLine()).equals(GameCommand.QUIT);
     }
 }

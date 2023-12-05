@@ -23,8 +23,8 @@ public class BridgeMaker {
      */
     public List<String> makeBridge(int size) {
         Map<Integer, String> bridgeConvert = new HashMap<>();
-        bridgeConvert.put(0, "U");
-        bridgeConvert.put(1, "D");
+        bridgeConvert.put(0, "D");
+        bridgeConvert.put(1, "U");
         return IntStream.range(0, size)
                 .map(value -> bridgeNumberGenerator.generate())
                 .mapToObj(bridgeConvert::get)

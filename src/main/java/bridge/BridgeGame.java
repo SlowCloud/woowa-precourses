@@ -1,7 +1,9 @@
 package bridge;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
@@ -59,20 +61,23 @@ public class BridgeGame {
     }
 
     private List<String> getMapLine(String direction) {
-        List<String> upline = new ArrayList<>();
+        List<String> line = new ArrayList<>();
+        Map<Boolean, String> elements = new HashMap<>();
+        elements.put(true, " O ");
+        elements.put(false, " X ");
         for (int i = 0; i < moves.size(); i++) {
             String move = moves.get(i);
             if (!move.equals(direction)) {
-                upline.add("   ");
+                line.add("   ");
                 continue;
             }
-            if (move.equals(bridge.get(i))) {
-                upline.add(" O ");
-                continue;
-            }
-            upline.add(" X ");
+            line.add(elements.get(isCorrectMove(move, i)));
         }
-        return upline;
+        return line;
+    }
+
+    private boolean isCorrectMove(String move, int i) {
+        return move.equals(bridge.get(i));
     }
 
     public int getTryCount() {

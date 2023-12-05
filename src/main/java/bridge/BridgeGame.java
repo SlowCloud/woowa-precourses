@@ -49,7 +49,7 @@ public class BridgeGame {
     }
 
     public boolean goal() {
-        return bridge.size() == moves.size();
+        return !wrongWay() && bridge.size() == moves.size();
     }
 
     public String getMap() {

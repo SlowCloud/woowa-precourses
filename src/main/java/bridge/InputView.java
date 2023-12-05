@@ -24,7 +24,15 @@ public class InputView {
      */
     public String readMoving() {
         System.out.println("이동할 칸을 선택해주세요. (위: U, 아래: D)");
-        return Console.readLine();
+        String move = Console.readLine();
+        validateMove(move);
+        return move;
+    }
+
+    private void validateMove(String move) {
+        if(!move.equals("U") && !move.equals("D")) {
+            throw new IllegalArgumentException("[ERROR] 입력은 U 또는 D이어야 합니다!");
+        }
     }
 
     /**
@@ -35,6 +43,14 @@ public class InputView {
         Map<String, Boolean> convert = new HashMap<>();
         convert.put("R", true);
         convert.put("Q", false);
-        return convert.get(Console.readLine());
+        String command = Console.readLine();
+        validateGameCommand(command);
+        return convert.get(command);
+    }
+
+    private void validateGameCommand(String command) {
+        if(!command.equals("R") && !command.equals("Q")) {
+            throw new IllegalArgumentException("[ERROR] 입력은 R 또는 Q이어야 합니다!");
+        }
     }
 }

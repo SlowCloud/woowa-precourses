@@ -36,4 +36,8 @@ public class OutputView {
     public void printTryCount(int tryCount) {
         System.out.printf("총 시도한 횟수: %d%n", tryCount);
     }
+
+    public void printException(Exception exception) {
+        System.out.println(exception.getMessage());
+    }
 }

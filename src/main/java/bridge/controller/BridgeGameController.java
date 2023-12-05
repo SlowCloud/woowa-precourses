@@ -2,8 +2,10 @@ package bridge.controller;
 
 import bridge.*;
 import bridge.domain.BridgeLength;
+import bridge.util.ExceptionHandler;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class BridgeGameController {
     private final InputView inputView;
@@ -16,24 +18,32 @@ public class BridgeGameController {
 
     public void play() {
         BridgeGame bridgeGame = new BridgeGame(getBridge());
-        while (true) {
-            while (!bridgeGame.end()) {
-                bridgeGame.move(inputView.readMoving());
-                outputView.printMap(bridgeGame.getMap());
-            }
-            if (!bridgeGame.goal() && inputView.readGameCommand()) {
-                bridgeGame.retry(getBridge());
-            }
-            break;
-        }
+        playGame(bridgeGame);
         outputView.printResult(bridgeGame.getMap());
         outputView.printWinOrNot(bridgeGame.goal());
         outputView.printTryCount(bridgeGame.getTryCount());
     }
 
+    private void playGame(BridgeGame bridgeGame) {
+        while (true) {
+            while (!bridgeGame.end()) {
+                bridgeGame.move(repeat(inputView::readMoving));
+                outputView.printMap(bridgeGame.getMap());
+            }
+            if (!bridgeGame.goal() && repeat(inputView::readGameCommand)) {
+                bridgeGame.retry(getBridge());
+            }
+            break;
+        }
+    }
+
     private List<String> getBridge() {
-        BridgeLength bridgeLength = inputView.readBridgeSize();
+        BridgeLength bridgeLength = repeat(inputView::readBridgeSize);
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
         return bridgeMaker.makeBridge(bridgeLength.getLength());
+    }
+
+    private <T> T repeat(Supplier<T> supplier) {
+        return ExceptionHandler.repeat(supplier, outputView::printException);
     }
 }

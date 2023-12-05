@@ -55,9 +55,9 @@ public class BridgeGame {
 
     public String getMap() {
         String res = "";
-        res += "[" + String.join(" | ", getMapLine("U")) + "]";
+        res += "[" + String.join("|", getMapLine("U")) + "]";
         res += "\n";
-        res += "[" + String.join(" | ", getMapLine("D")) + "]";
+        res += "[" + String.join("|", getMapLine("D")) + "]";
         return res;
     }
 
@@ -66,14 +66,14 @@ public class BridgeGame {
         for (int i = 0; i < moves.size(); i++) {
             String move = moves.get(i);
             if (!move.equals(direction)) {
-                upline.add(" ");
+                upline.add("   ");
                 continue;
             }
             if (move.equals(bridge.get(i))) {
-                upline.add("O");
+                upline.add(" O ");
                 continue;
             }
-            upline.add("X");
+            upline.add(" X ");
         }
         return upline;
     }

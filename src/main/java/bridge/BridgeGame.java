@@ -10,9 +10,7 @@ import java.util.stream.IntStream;
 public class BridgeGame {
     private final List<String> moves;
     private List<String> bridge;
-    private int now = 0;
-    private int tryCount = 0;
-    private boolean end = false;
+    private int tryCount = 1;
 
     public BridgeGame(List<String> bridge) {
         this.bridge = bridge;
@@ -35,7 +33,6 @@ public class BridgeGame {
      */
     public void retry(List<String> bridge) {
         tryCount++;
-        end = false;
         moves.clear();
         this.bridge = bridge;
     }

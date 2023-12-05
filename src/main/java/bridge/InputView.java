@@ -1,10 +1,9 @@
 package bridge;
 
+import bridge.constants.GameCommand;
+import bridge.constants.Move;
 import bridge.domain.BridgeLength;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 사용자로부터 입력을 받는 역할을 한다.
@@ -24,15 +23,7 @@ public class InputView {
      */
     public String readMoving() {
         System.out.println("이동할 칸을 선택해주세요. (위: U, 아래: D)");
-        String move = Console.readLine();
-        validateMove(move);
-        return move;
-    }
-
-    private void validateMove(String move) {
-        if(!move.equals("U") && !move.equals("D")) {
-            throw new IllegalArgumentException("[ERROR] 입력은 U 또는 D이어야 합니다!");
-        }
+        return Move.findByName(Console.readLine()).getString();
     }
 
     /**

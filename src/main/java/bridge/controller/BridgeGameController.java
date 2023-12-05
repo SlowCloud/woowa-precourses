@@ -1,7 +1,6 @@
 package bridge.controller;
 
 import bridge.*;
-import bridge.domain.Bridge;
 import bridge.domain.BridgeLength;
 
 import java.util.List;
@@ -16,25 +15,25 @@ public class BridgeGameController {
     }
 
     public void play() {
-        Bridge bridge = getBridge();
-        BridgeGame bridgeGame = new BridgeGame(bridge);
-        while(true) {
-            while(!bridgeGame.end()) {
+        BridgeGame bridgeGame = new BridgeGame(getBridge());
+        while (true) {
+            while (!bridgeGame.end()) {
                 bridgeGame.move(inputView.readMoving());
                 outputView.printMap(bridgeGame.getMap());
             }
-            if(inputView.retry()) {
-                bridgeGame.retry();
+            if (!bridgeGame.goal() && inputView.readGameCommand()) {
+                bridgeGame.retry(getBridge());
             }
+            break;
         }
         outputView.printResult(bridgeGame.getMap());
         outputView.printWinOrNot(bridgeGame.goal());
-        outputView.printTryCount(bridge.getTryCount());
+        outputView.printTryCount(bridgeGame.getTryCount());
     }
 
-    private Bridge getBridge() {
+    private List<String> getBridge() {
         BridgeLength bridgeLength = inputView.readBridgeSize();
         BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
-        return new Bridge(bridgeMaker.makeBridge(bridgeLength.getLength()));
+        return bridgeMaker.makeBridge(bridgeLength.getLength());
     }
 }

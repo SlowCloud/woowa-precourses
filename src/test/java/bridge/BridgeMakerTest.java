@@ -1,5 +1,6 @@
 package bridge;
 
+import bridge.fixture.FakeBridgeNumberGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -25,9 +26,3 @@ class BridgeMakerTest {
     }
 }
 
-class FakeBridgeNumberGenerator implements BridgeNumberGenerator {
-    @Override
-    public int generate() {
-        return 0;
-    }
-}

@@ -45,7 +45,7 @@ public class BridgeGame {
     }
 
     private boolean wrongWay() {
-        return IntStream.range(0, bridge.size())
+        return IntStream.range(0, moves.size())
                 .anyMatch(i -> !bridge.get(i).equals(moves.get(i)));
     }
 

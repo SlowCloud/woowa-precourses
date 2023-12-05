@@ -1,8 +1,5 @@
 package bridge;
 
-import org.assertj.core.configuration.Services;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +25,7 @@ public class BridgeMaker {
         Map<Integer, String> bridgeConvert = new HashMap<>();
         bridgeConvert.put(0, "U");
         bridgeConvert.put(1, "D");
-        return IntStream.range(0,size)
+        return IntStream.range(0, size)
                 .map(value -> bridgeNumberGenerator.generate())
                 .mapToObj(bridgeConvert::get)
                 .collect(Collectors.toList());

@@ -1,4 +1,4 @@
 package oncall.domain;
 
-public class Worker {
+public record Worker(String name) {
 }

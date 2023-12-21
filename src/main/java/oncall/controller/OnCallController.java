@@ -12,22 +12,44 @@ public class OnCallController {
         Day day = InputView.getDay();
         Workers weekdayWorkers = InputView.getWeekdayWorkers();
         Workers weekendWorkers = InputView.getWeekendWorkers();
+        Schedule schedule = getSchedule(day, weekdayWorkers, weekendWorkers);
+        OutputView.printSchedule(schedule);
+    }
+
+    private static Schedule getSchedule(Day day, Workers weekdayWorkers, Workers weekendWorkers) {
         Schedule schedule = new Schedule();
         while (!day.end()) {
-            Workers workers;
-            if (day.weekday()) workers = weekdayWorkers;
-            else workers = weekendWorkers;
-            Worker worker = workers.top();
-            workers.pop();
-            if (!schedule.empty() && schedule.isContinous(worker)) {
-                Worker nextWorker = workers.top();
-                workers.pop();
-                workers.pushFront(worker);
-                worker = nextWorker;
-            }
+            Workers workers = getProperWorkers(day, weekdayWorkers, weekendWorkers);
+            Worker worker = getProperWorker(workers, schedule);
             schedule.push(day, worker);
             day = day.next();
         }
-        OutputView.printSchedule(schedule);
+        return schedule;
+    }
+
+    private static Workers getProperWorkers(Day day, Workers weekdayWorkers, Workers weekendWorkers) {
+        if (day.weekday()) return weekdayWorkers;
+        return weekendWorkers;
+    }
+
+    private static Worker getProperWorker(Workers workers, Schedule schedule) {
+        Worker worker = pop(workers);
+        if (!schedule.empty() && schedule.isContinous(worker)) {
+            worker = getNextWorker(workers, worker);
+        }
+        return worker;
+    }
+
+    private static Worker getNextWorker(Workers workers, Worker worker) {
+        Worker nextWorker = pop(workers);
+        workers.pushFront(worker);
+        worker = nextWorker;
+        return worker;
+    }
+
+    private static Worker pop(Workers workers) {
+        Worker worker = workers.top();
+        workers.pop();
+        return worker;
     }
 }

@@ -19,7 +19,7 @@ public class OnCallController {
             else workers = weekendWorkers;
             Worker worker = workers.top();
             workers.pop();
-            if (schedule.isContinous(worker)) {
+            if (!schedule.empty() && schedule.isContinous(worker)) {
                 Worker nextWorker = workers.top();
                 workers.pop();
                 workers.pushFront(worker);

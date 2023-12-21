@@ -18,6 +18,10 @@ public class Schedule {
         rows.add(new Row(day, worker));
     }
 
+    public boolean empty() {
+        return rows.isEmpty();
+    }
+
     record Row(Day day, Worker worker) {
     }
 }

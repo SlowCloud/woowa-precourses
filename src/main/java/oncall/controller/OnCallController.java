@@ -17,17 +17,15 @@ public class OnCallController {
             Workers workers;
             if (day.weekday()) workers = weekdayWorkers;
             else workers = weekendWorkers;
-            while (!workers.empty()) {
-                Worker worker = workers.top();
+            Worker worker = workers.top();
+            workers.pop();
+            if (schedule.isContinous(worker)) {
+                Worker nextWorker = workers.top();
                 workers.pop();
-                if (schedule.isContinous(worker)) {
-                    Worker nextWorker = workers.top();
-                    workers.pop();
-                    workers.pushFront(worker);
-                    worker = nextWorker;
-                }
-                schedule.push(day, worker);
+                workers.pushFront(worker);
+                worker = nextWorker;
             }
+            schedule.push(day, worker);
             day = day.next();
         }
         OutputView.printSchedule(schedule);

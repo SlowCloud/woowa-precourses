@@ -21,8 +21,8 @@ class ScheduleTest {
             schedule.push(day, worker);
 
             assertAll(
-                    () -> assertTrue(schedule.isContinous(worker)),
-                    () -> assertTrue(schedule.isContinous(new Worker("1")))
+                    () -> assertTrue(schedule.isContinuous(worker)),
+                    () -> assertTrue(schedule.isContinuous(new Worker("1")))
             );
         }
 
@@ -34,7 +34,7 @@ class ScheduleTest {
 
             schedule.push(day, worker);
 
-            assertFalse(schedule.isContinous(new Worker("2")));
+            assertFalse(schedule.isContinuous(new Worker("2")));
         }
     }
 

@@ -10,7 +10,7 @@ public class Schedule {
         rows = new LinkedList<>();
     }
 
-    public boolean isContinous(Worker worker) {
+    public boolean isContinuous(Worker worker) {
         return rows.get(rows.size() - 1).worker().equals(worker);
     }
 

@@ -34,7 +34,7 @@ public class OnCallController {
 
     private static Worker getProperWorker(Workers workers, Schedule schedule) {
         Worker worker = pop(workers);
-        if (!schedule.empty() && schedule.isContinous(worker)) {
+        if (!schedule.empty() && schedule.isContinuous(worker)) {
             worker = getNextWorker(workers, worker);
         }
         return worker;

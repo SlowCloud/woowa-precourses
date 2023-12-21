@@ -5,8 +5,8 @@ import java.time.Month;
 
 public class Day {
     private final DayOfWeek dayOfWeek;
-    private Month month;
-    private int today;
+    private final Month month;
+    private final int today;
 
     public Day(Month month, DayOfWeek dayOfWeek) {
         this(month, dayOfWeek, 1);

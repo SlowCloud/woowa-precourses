@@ -1,5 +1,6 @@
 package oncall.controller;
 
+import oncall.constant.Calendar;
 import oncall.domain.Day;
 import oncall.domain.Schedule;
 import oncall.domain.Worker;
@@ -28,7 +29,7 @@ public class OnCallController {
     }
 
     private static Workers getProperWorkers(Day day, Workers weekdayWorkers, Workers weekendWorkers) {
-        if (day.weekday()) return weekdayWorkers;
+        if (Calendar.dayOff(day)) return weekdayWorkers;
         return weekendWorkers;
     }
 

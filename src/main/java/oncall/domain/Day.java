@@ -34,6 +34,10 @@ public class Day {
         return new Day(month, dayOfWeek.plus(1), today + 1);
     }
 
+    public boolean is(int month, int day) {
+        return Month.of(month).equals(this.month) && this.today == day;
+    }
+
     // 서비스로 빼기. 다량의 테스트 필요
     private static class Converter {
 

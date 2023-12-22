@@ -1,5 +1,7 @@
 package oncall.domain;
 
+import oncall.constant.Calendar;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +24,16 @@ public class Schedule {
         return rows.isEmpty();
     }
 
+    public String getMessage() {
+        return String.join(System.lineSeparator(), rows.stream().map(Row::getMessage).toList());
+    }
+
     record Row(Day day, Worker worker) {
+        public String getMessage() {
+            String message = day.getMessage();
+            if (day.weekday() && Calendar.dayOff(day)) message += "(휴일)";
+            message += " " + worker().name();
+            return message;
+        }
     }
 }

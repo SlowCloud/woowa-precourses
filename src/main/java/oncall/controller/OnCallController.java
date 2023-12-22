@@ -29,8 +29,8 @@ public class OnCallController {
     }
 
     private static Workers getProperWorkers(Day day, Workers weekdayWorkers, Workers weekendWorkers) {
-        if (Calendar.dayOff(day)) return weekdayWorkers;
-        return weekendWorkers;
+        if (Calendar.dayOff(day)) return weekendWorkers;
+        return weekdayWorkers;
     }
 
     private static Worker getProperWorker(Workers workers, Schedule schedule) {

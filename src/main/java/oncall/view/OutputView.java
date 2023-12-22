@@ -4,5 +4,6 @@ import oncall.domain.Schedule;
 
 public class OutputView {
     public static void printSchedule(Schedule schedule) {
+        System.out.println(schedule.getMessage());
     }
 }

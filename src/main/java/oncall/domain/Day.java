@@ -1,5 +1,7 @@
 package oncall.domain;
 
+import oncall.constant.DayOfWeekKor;
+
 import java.time.DayOfWeek;
 import java.time.Month;
 
@@ -38,6 +40,10 @@ public class Day {
         return Month.of(month).equals(this.month) && this.today == day;
     }
 
+    public String getMessage() {
+        return String.format("%d월 %d일 %s", month.getValue(), today, DayOfWeekKor.findByDayOfWeek(dayOfWeek).name());
+    }
+
     // 서비스로 빼기. 다량의 테스트 필요
     private static class Converter {
 
@@ -58,24 +64,6 @@ public class Day {
                 Integer.parseInt(month);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
-            }
-        }
-
-        private enum DayOfWeekKor {
-            월(1), 화(2), 수(3), 목(4), 금(5), 토(6), 일(7);
-
-            private final DayOfWeek dayOfWeek;
-
-            DayOfWeekKor(int number) {
-                this.dayOfWeek = DayOfWeek.of(number);
-            }
-
-            public static DayOfWeek find(String dayOfWeek) {
-                try {
-                    return valueOf(dayOfWeek).dayOfWeek;
-                } catch (IllegalArgumentException e) {
-                    throw new IllegalArgumentException("[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
-                }
             }
         }
     }

@@ -20,10 +20,6 @@ public class Day {
         this.today = today;
     }
 
-    public static Day of(String line) {
-        return Converter.getDay(line);
-    }
-
     public boolean end() {
         return today > month.maxLength();
     }
@@ -42,29 +38,5 @@ public class Day {
 
     public String getMessage() {
         return String.format("%d월 %d일 %s", month.getValue(), today, DayOfWeekKor.findByDayOfWeek(dayOfWeek).name());
-    }
-
-    // 서비스로 빼기. 다량의 테스트 필요
-    private static class Converter {
-
-        private static final String DAY_DELIMITER = ",";
-
-        public static Day getDay(String line) {
-            String[] split = line.split(DAY_DELIMITER);
-            return getDay(split[0].trim(), split[1].trim());
-        }
-
-        private static Day getDay(String month, String dayOfWeek) {
-            validateNumber(month);
-            return new Day(Month.of(Integer.parseInt(month)), DayOfWeekKor.find(dayOfWeek));
-        }
-
-        private static void validateNumber(String month) {
-            try {
-                Integer.parseInt(month);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
-            }
-        }
     }
 }
